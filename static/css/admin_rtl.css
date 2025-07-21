@@ -1,0 +1,26 @@
+/* راست‌چین کردن پنل ادمین */
+body,
+.module,
+.change-form,
+.dashboard {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+#header,
+#user-tools,
+#content,
+.breadcrumbs,
+.module caption,
+.submit-row {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* تنظیمات فریم ورک و قالب بندی */
+fieldset.module,
+.form-row,
+.form-row.field-box {
+  direction: rtl !important;
+  text-align: right !important;
+}
