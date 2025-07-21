@@ -6853,3 +6853,12 @@ Traceback (most recent call last):
                 ^^^^^^^^^^^^^^
 AttributeError: type object 'User' has no attribute 'RoleTypes'
 [ERROR] 2025-07-21 10:50:15,771 basehttp 8365 6221901824 "POST /api/users/verify-otp/ HTTP/1.1" 500 96056
+[INFO] 2025-07-21 11:02:40,897 autoreload 12238 8244539968 Watching for file changes with StatReloader
+[WARNING] 2025-07-21 11:02:43,506 log 12238 6135558144 Bad Request: /api/users/verify-otp/
+[WARNING] 2025-07-21 11:02:43,506 basehttp 12238 6135558144 "POST /api/users/verify-otp/ HTTP/1.1" 400 66
+[INFO] 2025-07-21 11:02:48,983 basehttp 12238 6135558144 "POST /api/users/send-otp/ HTTP/1.1" 200 71
+[INFO] 2025-07-21 11:02:57,292 basehttp 12238 6135558144 "POST /api/users/verify-otp/ HTTP/1.1" 200 909
+[INFO] 2025-07-21 11:03:20,160 basehttp 12238 6135558144 "GET /api/users/complete-profile/ HTTP/1.1" 200 412
+[WARNING] 2025-07-21 11:04:22,460 log 12238 6152384512 Method Not Allowed: /api/users/complete-profile/
+[WARNING] 2025-07-21 11:04:22,461 basehttp 12238 6152384512 "POST /api/users/complete-profile/ HTTP/1.1" 405 43
+[INFO] 2025-07-21 11:04:26,106 basehttp 12238 6152384512 "PUT /api/users/complete-profile/ HTTP/1.1" 200 412
