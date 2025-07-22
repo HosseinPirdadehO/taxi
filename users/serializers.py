@@ -1,3 +1,6 @@
+from .models import StudentProfile
+from .models import DriverProfile
+from .models import SchoolProfile
 from .models import Referral, RoleTypes
 from users.models import User, Referral
 from users.models import DriverProfile
@@ -43,6 +46,7 @@ class TokenResponseSerializer(serializers.Serializer):
     access = serializers.CharField()
     refresh = serializers.CharField()
     profile_complete = serializers.BooleanField()
+    is_first_login = serializers.BooleanField()
 
 
 class ChangePhoneRequestSerializer(serializers.Serializer):
@@ -330,7 +334,7 @@ class CompleteProfileSerializer(serializers.ModelSerializer):
             serializer_map = {
                 'driverprofile': DriverProfileSerializer,
                 'parentprofile': ParentProfileSerializer,
-                'studentprofile': StudentProfileSerializer,
+                'studentprofile': SchoolAdminProfileSerializer,
                 'schoolprofile': SchoolAdminProfileSerializer,
                 'transportadminprofile': TransportAdminProfileSerializer,
                 'educationadminprofile': EducationAdminProfileSerializer,
@@ -375,6 +379,57 @@ class CompleteProfileSerializer(serializers.ModelSerializer):
 
         return instance
 
+
+# ----
+
+
+class UserSerializer(serializers.ModelSerializer):
+    full_name = serializers.SerializerMethodField()
+    inviter = serializers.PrimaryKeyRelatedField(read_only=True)
+    date_joined = serializers.DateTimeField(
+        format='%Y-%m-%d %H:%M:%S', read_only=True)
+
+    class Meta:
+        model = User
+        fields = [
+            'id',
+            'phone_number',
+            'is_phone_verified',
+            'first_name',
+            'last_name',
+            'full_name',
+            'email',
+            'role',
+            'national_code',
+            'province',
+            'city',
+            'birth_date',
+            'referral_code',
+            'used_referral_code',
+            'inviter',
+            'is_active',
+            'is_staff',
+            'date_joined',
+        ]
+        read_only_fields = ['id', 'referral_code',
+                            'inviter', 'is_staff', 'date_joined']
+
+    def get_full_name(self, obj):
+        return f"{obj.first_name or ''} {obj.last_name or ''}".strip()
+
+
+# ------
+
+
+# class UserInfoMixin(serializers.Serializer):
+#     phone_number = serializers.CharField(
+#         source='user.phone_number', read_only=True)
+#     first_name = serializers.CharField(
+#         source='user.first_name', read_only=True)
+#     last_name = serializers.CharField(source='user.last_name', read_only=True)
+#     email = serializers.EmailField(source='user.email', read_only=True)
+
+# ------
 # نکته کلیدی
 # API مجزا
 # کنترل کامل تغییر نقش و مدیریت وابستگی‌ها

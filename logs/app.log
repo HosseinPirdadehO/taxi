@@ -6862,3 +6862,851 @@ AttributeError: type object 'User' has no attribute 'RoleTypes'
 [WARNING] 2025-07-21 11:04:22,460 log 12238 6152384512 Method Not Allowed: /api/users/complete-profile/
 [WARNING] 2025-07-21 11:04:22,461 basehttp 12238 6152384512 "POST /api/users/complete-profile/ HTTP/1.1" 405 43
 [INFO] 2025-07-21 11:04:26,106 basehttp 12238 6152384512 "PUT /api/users/complete-profile/ HTTP/1.1" 200 412
+[INFO] 2025-07-21 11:27:12,625 autoreload 17544 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-21 11:27:48,975 autoreload 17544 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/taxi/settings.py changed, reloading.
+[INFO] 2025-07-21 11:27:49,282 autoreload 17678 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-21 11:27:53,544 autoreload 17678 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/taxi/settings.py changed, reloading.
+[INFO] 2025-07-21 11:27:53,781 autoreload 17700 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-21 11:28:25,920 autoreload 17700 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/taxi/settings.py changed, reloading.
+[INFO] 2025-07-21 11:28:26,264 autoreload 17836 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-21 11:28:27,482 autoreload 17836 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/taxi/settings.py changed, reloading.
+[INFO] 2025-07-21 11:28:27,728 autoreload 17846 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 13:34:32,272 autoreload 33936 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 13:34:43,754 autoreload 33936 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 13:34:44,054 autoreload 33986 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 13:34:48,262 autoreload 33986 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 13:34:48,468 autoreload 34008 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 13:34:50,656 autoreload 34008 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 13:34:50,874 autoreload 34022 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 13:35:23,005 autoreload 34022 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 13:35:23,344 autoreload 34135 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:03:03,413 autoreload 37706 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:03:14,863 autoreload 37706 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:03:15,179 autoreload 37756 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:03:34,916 autoreload 37756 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:03:35,319 autoreload 37839 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:03:53,933 autoreload 37839 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:03:54,222 autoreload 37911 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:04:06,697 autoreload 37911 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:04:07,083 autoreload 37965 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:04:17,602 autoreload 37965 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:04:17,896 autoreload 38016 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:04:22,191 autoreload 38016 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:04:22,427 autoreload 38040 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:04:28,726 autoreload 38040 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:04:28,967 autoreload 38067 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:05:49,561 autoreload 38067 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:05:49,935 autoreload 38349 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:05:59,401 autoreload 38349 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:05:59,740 autoreload 38405 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:06:57,647 autoreload 38405 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:06:57,981 autoreload 38608 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:08:25,800 autoreload 38608 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:08:26,155 autoreload 38941 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:08:32,514 autoreload 38941 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:08:32,821 autoreload 38978 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:12:40,669 autoreload 38978 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:12:41,024 autoreload 39844 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:15:56,527 autoreload 39844 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:15:56,860 autoreload 40541 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:16:33,026 autoreload 40541 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:16:33,340 autoreload 40660 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:16:34,480 autoreload 40660 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:16:34,723 autoreload 40669 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:16:40,961 autoreload 40669 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:16:41,172 autoreload 40700 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:16:51,516 autoreload 40700 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:16:51,747 autoreload 40739 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:16:54,911 autoreload 40739 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:16:55,126 autoreload 40756 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:16:57,260 autoreload 40756 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:16:57,494 autoreload 40767 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:17:05,777 autoreload 40767 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:17:06,026 autoreload 40813 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:17:08,156 autoreload 40813 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:17:08,367 autoreload 40829 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:17:12,577 autoreload 40829 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:17:12,787 autoreload 40852 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:17:15,931 autoreload 40852 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:17:16,148 autoreload 40871 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:17:17,246 autoreload 40871 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:17:17,458 autoreload 40878 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:17:21,670 autoreload 40878 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:17:21,903 autoreload 40902 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:17:26,089 autoreload 40902 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:17:26,308 autoreload 40924 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:17:28,522 autoreload 40924 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:17:28,759 autoreload 40938 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:17:41,240 autoreload 40938 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:17:41,560 autoreload 40989 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:17:44,810 autoreload 40989 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:17:45,040 autoreload 41010 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:17:46,210 autoreload 41010 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:17:46,423 autoreload 41019 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:17:47,600 autoreload 41019 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:17:47,809 autoreload 41028 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:21:18,481 autoreload 41028 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:21:18,830 autoreload 41685 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:21:28,244 autoreload 41685 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:21:28,555 autoreload 41723 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:21:31,799 autoreload 41723 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:21:32,013 autoreload 41743 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:21:40,385 autoreload 41743 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:21:40,620 autoreload 41779 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:21:43,819 autoreload 41779 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:21:44,044 autoreload 41798 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:21:55,548 autoreload 41798 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:21:55,796 autoreload 41841 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:22:56,766 autoreload 41841 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:22:57,102 autoreload 42043 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:23:10,570 autoreload 42043 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:23:10,865 autoreload 42097 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:23:19,231 autoreload 42097 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:23:19,439 autoreload 42131 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:23:21,641 autoreload 42131 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:23:21,851 autoreload 42149 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:23:35,375 autoreload 42149 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:23:35,603 autoreload 42201 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:23:51,226 autoreload 42201 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:23:51,554 autoreload 42260 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:25:16,374 autoreload 42260 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:25:16,735 autoreload 42537 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:25:23,023 autoreload 42537 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:25:23,369 autoreload 42571 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:25:30,722 autoreload 42571 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:25:31,021 autoreload 42601 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:26:14,457 autoreload 42601 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:26:14,796 autoreload 42746 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:37:29,909 autoreload 42746 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:37:30,319 autoreload 44908 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:37:57,325 autoreload 44908 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:37:57,656 autoreload 45013 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:38:08,115 autoreload 45013 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:38:08,442 autoreload 45057 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:38:09,662 autoreload 45057 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:38:09,872 autoreload 45063 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:38:16,160 autoreload 45063 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:38:16,383 autoreload 45089 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:38:17,560 autoreload 45089 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:38:17,778 autoreload 45100 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:38:22,040 autoreload 45100 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:38:22,268 autoreload 45122 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:38:24,395 autoreload 45122 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:38:24,600 autoreload 45134 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:38:30,926 autoreload 45134 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:38:31,150 autoreload 45162 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:38:33,344 autoreload 45162 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:38:33,569 autoreload 45173 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:38:38,869 autoreload 45173 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:38:39,098 autoreload 45198 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:38:47,449 autoreload 45198 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:38:47,730 autoreload 45240 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:38:50,968 autoreload 45240 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:38:51,178 autoreload 45254 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:38:58,517 autoreload 45254 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:38:58,746 autoreload 45289 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:39:05,060 autoreload 45289 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 14:39:05,294 autoreload 45316 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:39:21,871 autoreload 45316 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:39:22,203 autoreload 45387 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:40:18,977 autoreload 45387 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:40:19,336 autoreload 45588 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:40:21,585 autoreload 45588 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:40:21,814 autoreload 45602 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:40:23,000 autoreload 45602 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:40:23,214 autoreload 45611 8244539968 Watching for file changes with StatReloader
+[WARNING] 2025-07-22 14:40:37,340 log 45611 6166376448 Not Found: /
+[WARNING] 2025-07-22 14:40:37,341 basehttp 45611 6166376448 "GET / HTTP/1.1" 404 3028
+[WARNING] 2025-07-22 14:40:37,405 log 45611 6166376448 Not Found: /favicon.ico
+[WARNING] 2025-07-22 14:40:37,405 basehttp 45611 6166376448 "GET /favicon.ico HTTP/1.1" 404 3079
+[WARNING] 2025-07-22 14:40:41,863 log 45611 6166376448 Not Found: /api/users/
+[WARNING] 2025-07-22 14:40:41,863 basehttp 45611 6166376448 "GET /api/users/ HTTP/1.1" 404 9021
+[WARNING] 2025-07-22 14:40:42,150 log 45611 6166376448 Not Found: /api/users/
+[WARNING] 2025-07-22 14:40:42,150 basehttp 45611 6166376448 "GET /api/users/ HTTP/1.1" 404 9021
+[WARNING] 2025-07-22 14:40:50,127 log 45611 6166376448 Unauthorized: /api/users/users/
+[WARNING] 2025-07-22 14:40:50,127 basehttp 45611 6166376448 "GET /api/users/users/ HTTP/1.1" 401 9874
+[INFO] 2025-07-22 14:40:50,145 basehttp 45611 6166376448 "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+[INFO] 2025-07-22 14:40:50,147 basehttp 45611 6183202816 "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+[INFO] 2025-07-22 14:40:50,147 basehttp 45611 6200029184 "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+[INFO] 2025-07-22 14:40:50,148 basehttp 45611 6216855552 "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+[INFO] 2025-07-22 14:40:50,150 basehttp 45611 6250508288 "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+[INFO] 2025-07-22 14:40:50,151 basehttp 45611 6166376448 "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+[INFO] 2025-07-22 14:40:50,152 basehttp 45611 6183202816 "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+[INFO] 2025-07-22 14:40:50,152 basehttp 45611 6200029184 "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+[INFO] 2025-07-22 14:40:50,152 basehttp 45611 6216855552 "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 304 0
+[INFO] 2025-07-22 14:40:50,153 basehttp 45611 6233681920 "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 304 0
+[INFO] 2025-07-22 14:40:50,153 basehttp 45611 6250508288 "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+[INFO] 2025-07-22 14:40:50,155 basehttp 45611 6250508288 "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+[WARNING] 2025-07-22 14:41:02,697 log 45611 6250508288 Not Found: /api/users/schools/ [
+[WARNING] 2025-07-22 14:41:02,697 basehttp 45611 6250508288 "GET /api/users/schools/%20[ HTTP/1.1" 404 9055
+[WARNING] 2025-07-22 14:41:05,392 log 45611 6250508288 Not Found: /api/users/
+[WARNING] 2025-07-22 14:41:05,392 basehttp 45611 6250508288 "GET /api/users/ HTTP/1.1" 404 9021
+[WARNING] 2025-07-22 14:41:11,685 log 45611 6250508288 Unauthorized: /api/users/schools/
+[WARNING] 2025-07-22 14:41:11,685 basehttp 45611 6250508288 "GET /api/users/schools/ HTTP/1.1" 401 9896
+[WARNING] 2025-07-22 14:41:21,716 log 45611 6250508288 Unauthorized: /api/users/drivers/
+[WARNING] 2025-07-22 14:41:21,717 basehttp 45611 6250508288 "GET /api/users/drivers/ HTTP/1.1" 401 9896
+[INFO] 2025-07-22 14:42:57,666 autoreload 47162 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:43:03,015 autoreload 47162 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:43:03,237 autoreload 47190 8244539968 Watching for file changes with StatReloader
+[WARNING] 2025-07-22 14:43:41,395 log 47190 6157103104 Not Found: /api/users/
+[WARNING] 2025-07-22 14:43:41,395 basehttp 47190 6157103104 "GET /api/users/ HTTP/1.1" 404 9021
+[WARNING] 2025-07-22 14:43:41,790 log 47190 6157103104 Not Found: /api/users/
+[WARNING] 2025-07-22 14:43:41,791 basehttp 47190 6157103104 "GET /api/users/ HTTP/1.1" 404 9021
+[WARNING] 2025-07-22 14:43:46,601 log 47190 6157103104 Unauthorized: /api/users/users/
+[WARNING] 2025-07-22 14:43:46,601 basehttp 47190 6157103104 "GET /api/users/users/ HTTP/1.1" 401 9874
+[INFO] 2025-07-22 14:46:07,229 autoreload 47190 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:46:07,554 autoreload 47786 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:46:35,488 autoreload 47786 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:46:35,791 autoreload 47892 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:51:59,825 autoreload 47892 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:52:00,138 autoreload 48900 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:52:03,351 autoreload 48900 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:52:03,609 autoreload 48922 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:52:10,970 autoreload 48922 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:52:11,177 autoreload 48952 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:53:24,547 autoreload 48952 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 14:53:24,886 autoreload 49193 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:53:39,462 autoreload 49193 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:53:39,682 autoreload 49251 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 14:53:45,972 autoreload 49251 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 14:53:46,190 autoreload 49279 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:03:55,078 autoreload 49279 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:03:55,387 autoreload 51162 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:03:57,544 autoreload 51162 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:03:57,791 autoreload 51177 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:04:22,609 autoreload 51177 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:04:22,984 autoreload 51262 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:04:30,279 autoreload 51262 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:04:30,502 autoreload 51299 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:04:40,973 autoreload 51299 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:04:41,210 autoreload 51338 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:04:43,415 autoreload 51338 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:04:43,685 autoreload 51356 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:07:19,496 autoreload 51356 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:07:19,802 autoreload 51842 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:07:42,587 autoreload 51842 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 15:07:42,893 autoreload 51935 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:07:46,085 autoreload 51935 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 15:07:46,310 autoreload 51957 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:07:47,492 autoreload 51957 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 15:07:47,698 autoreload 51963 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:08:28,100 autoreload 51963 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:08:28,435 autoreload 52099 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:08:47,185 autoreload 52099 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:08:47,405 autoreload 52171 8244539968 Watching for file changes with StatReloader
+[WARNING] 2025-07-22 15:09:04,438 log 52171 6137982976 Unauthorized: /api/users/users/
+[WARNING] 2025-07-22 15:09:04,439 basehttp 52171 6137982976 "GET /api/users/users/ HTTP/1.1" 401 9874
+[WARNING] 2025-07-22 15:09:05,029 log 52171 6137982976 Unauthorized: /api/users/users/
+[WARNING] 2025-07-22 15:09:05,030 basehttp 52171 6137982976 "GET /api/users/users/ HTTP/1.1" 401 9874
+[WARNING] 2025-07-22 15:09:05,166 log 52171 6137982976 Unauthorized: /api/users/users/
+[WARNING] 2025-07-22 15:09:05,166 basehttp 52171 6137982976 "GET /api/users/users/ HTTP/1.1" 401 9874
+[WARNING] 2025-07-22 15:09:06,339 log 52171 6137982976 Not Found: /api/users/
+[WARNING] 2025-07-22 15:09:06,340 basehttp 52171 6137982976 "GET /api/users/ HTTP/1.1" 404 10199
+[WARNING] 2025-07-22 15:09:06,493 log 52171 6137982976 Not Found: /api/users/
+[WARNING] 2025-07-22 15:09:06,493 basehttp 52171 6137982976 "GET /api/users/ HTTP/1.1" 404 10199
+[WARNING] 2025-07-22 15:09:06,664 log 52171 6137982976 Not Found: /api/users/
+[WARNING] 2025-07-22 15:09:06,664 basehttp 52171 6137982976 "GET /api/users/ HTTP/1.1" 404 10199
+[WARNING] 2025-07-22 15:09:06,807 log 52171 6137982976 Not Found: /api/users/
+[WARNING] 2025-07-22 15:09:06,807 basehttp 52171 6137982976 "GET /api/users/ HTTP/1.1" 404 10199
+[WARNING] 2025-07-22 15:09:06,961 log 52171 6137982976 Not Found: /api/users/
+[WARNING] 2025-07-22 15:09:06,961 basehttp 52171 6137982976 "GET /api/users/ HTTP/1.1" 404 10199
+[WARNING] 2025-07-22 15:09:07,099 log 52171 6137982976 Not Found: /api/users/
+[WARNING] 2025-07-22 15:09:07,100 basehttp 52171 6137982976 "GET /api/users/ HTTP/1.1" 404 10199
+[INFO] 2025-07-22 15:09:56,799 basehttp 52171 6137982976 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:09:56,817 basehttp 52171 6154809344 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+[INFO] 2025-07-22 15:09:56,817 basehttp 52171 6137982976 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+[INFO] 2025-07-22 15:09:56,817 basehttp 52171 6171635712 "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+[INFO] 2025-07-22 15:09:56,820 basehttp 52171 6171635712 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+[INFO] 2025-07-22 15:09:56,820 basehttp 52171 6137982976 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+[INFO] 2025-07-22 15:09:56,823 basehttp 52171 6137982976 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+[INFO] 2025-07-22 15:09:56,824 basehttp 52171 6137982976 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+[ERROR] 2025-07-22 15:09:56,931 log 52171 6137982976 Internal Server Error: /swagger/
+Traceback (most recent call last):
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/views.py", line 112, in get
+    schema = generator.get_schema(request, self.public)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 276, in get_schema
+    paths, prefix = self.get_paths(endpoints, components, request, public)
+                    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 482, in get_paths
+    operation = self.get_operation(view, path, prefix, method, components, request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 524, in get_operation
+    operation = view_inspector.get_operation(operation_keys)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 45, in get_operation
+    responses = self.get_responses()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 180, in get_responses
+    response_serializers = self.get_response_serializers()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 235, in get_response_serializers
+    responses = self.get_default_responses()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 211, in get_default_responses
+    default_schema = self.serializer_to_schema(default_schema) or ''
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 438, in serializer_to_schema
+    return self.probe_inspectors(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        self.field_inspectors, 'get_schema', serializer, {'field_inspectors': self.field_inspectors}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 110, in probe_inspectors
+    result = method(obj, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 49, in get_schema
+    return self.probe_field_inspectors(serializer, openapi.Schema, self.use_definitions)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 228, in probe_field_inspectors
+    return self.probe_inspectors(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        self.field_inspectors, 'field_to_swagger_object', field, {'field_inspectors': self.field_inspectors},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        swagger_object_type=swagger_object_type, use_references=use_references, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 110, in probe_inspectors
+    result = method(obj, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 140, in field_to_swagger_object
+    actual_schema = definitions.setdefault(ref_name, make_schema_definition)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/openapi.py", line 685, in setdefault
+    ret = maker()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 109, in make_schema_definition
+    for property_name, child in serializer.fields.items():
+                                ^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 374, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 1105, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ~~~~~~~~~~~~~~~~^
+        source, info, model, depth
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 1251, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 1369, in build_unknown_field
+    raise ImproperlyConfigured(
+    ...<2 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Field name `first_name` is not valid for model `StudentProfile` in `users.serializers.StudentProfileSerializer`.
+[ERROR] 2025-07-22 15:09:56,935 basehttp 52171 6137982976 "GET /swagger/?format=openapi HTTP/1.1" 500 223422
+[INFO] 2025-07-22 15:10:44,339 autoreload 52171 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 15:10:44,671 autoreload 52558 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:10:48,412 basehttp 52558 6164901888 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:10:48,473 basehttp 52558 6181728256 "GET /static/drf-yasg/swagger-ui-dist/favicon-32x32.png HTTP/1.1" 304 0
+[ERROR] 2025-07-22 15:10:48,499 log 52558 6164901888 Internal Server Error: /swagger/
+Traceback (most recent call last):
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/views.py", line 112, in get
+    schema = generator.get_schema(request, self.public)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 276, in get_schema
+    paths, prefix = self.get_paths(endpoints, components, request, public)
+                    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 482, in get_paths
+    operation = self.get_operation(view, path, prefix, method, components, request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 524, in get_operation
+    operation = view_inspector.get_operation(operation_keys)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 45, in get_operation
+    responses = self.get_responses()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 180, in get_responses
+    response_serializers = self.get_response_serializers()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 235, in get_response_serializers
+    responses = self.get_default_responses()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 211, in get_default_responses
+    default_schema = self.serializer_to_schema(default_schema) or ''
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 438, in serializer_to_schema
+    return self.probe_inspectors(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        self.field_inspectors, 'get_schema', serializer, {'field_inspectors': self.field_inspectors}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 110, in probe_inspectors
+    result = method(obj, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 49, in get_schema
+    return self.probe_field_inspectors(serializer, openapi.Schema, self.use_definitions)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 228, in probe_field_inspectors
+    return self.probe_inspectors(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        self.field_inspectors, 'field_to_swagger_object', field, {'field_inspectors': self.field_inspectors},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        swagger_object_type=swagger_object_type, use_references=use_references, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 110, in probe_inspectors
+    result = method(obj, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 140, in field_to_swagger_object
+    actual_schema = definitions.setdefault(ref_name, make_schema_definition)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/openapi.py", line 685, in setdefault
+    ret = maker()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 109, in make_schema_definition
+    for property_name, child in serializer.fields.items():
+                                ^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 374, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 1105, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ~~~~~~~~~~~~~~~~^
+        source, info, model, depth
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 1251, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 1369, in build_unknown_field
+    raise ImproperlyConfigured(
+    ...<2 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Field name `last_name` is not valid for model `StudentProfile` in `users.serializers.StudentProfileSerializer`.
+[ERROR] 2025-07-22 15:10:48,502 basehttp 52558 6164901888 "GET /swagger/?format=openapi HTTP/1.1" 500 223100
+[INFO] 2025-07-22 15:10:55,197 autoreload 52558 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 15:10:55,524 autoreload 52602 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:10:58,740 basehttp 52602 6158757888 "GET /swagger/ HTTP/1.1" 200 2211
+[ERROR] 2025-07-22 15:10:58,829 log 52602 6158757888 Internal Server Error: /swagger/
+Traceback (most recent call last):
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/views.py", line 112, in get
+    schema = generator.get_schema(request, self.public)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 276, in get_schema
+    paths, prefix = self.get_paths(endpoints, components, request, public)
+                    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 482, in get_paths
+    operation = self.get_operation(view, path, prefix, method, components, request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 524, in get_operation
+    operation = view_inspector.get_operation(operation_keys)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 45, in get_operation
+    responses = self.get_responses()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 180, in get_responses
+    response_serializers = self.get_response_serializers()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 235, in get_response_serializers
+    responses = self.get_default_responses()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 211, in get_default_responses
+    default_schema = self.serializer_to_schema(default_schema) or ''
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 438, in serializer_to_schema
+    return self.probe_inspectors(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        self.field_inspectors, 'get_schema', serializer, {'field_inspectors': self.field_inspectors}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 110, in probe_inspectors
+    result = method(obj, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 49, in get_schema
+    return self.probe_field_inspectors(serializer, openapi.Schema, self.use_definitions)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 228, in probe_field_inspectors
+    return self.probe_inspectors(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        self.field_inspectors, 'field_to_swagger_object', field, {'field_inspectors': self.field_inspectors},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        swagger_object_type=swagger_object_type, use_references=use_references, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 110, in probe_inspectors
+    result = method(obj, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 140, in field_to_swagger_object
+    actual_schema = definitions.setdefault(ref_name, make_schema_definition)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/openapi.py", line 685, in setdefault
+    ret = maker()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 109, in make_schema_definition
+    for property_name, child in serializer.fields.items():
+                                ^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 374, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 1105, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ~~~~~~~~~~~~~~~~^
+        source, info, model, depth
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 1251, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 1369, in build_unknown_field
+    raise ImproperlyConfigured(
+    ...<2 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Field name `email` is not valid for model `StudentProfile` in `users.serializers.StudentProfileSerializer`.
+[ERROR] 2025-07-22 15:10:58,834 basehttp 52602 6158757888 "GET /swagger/?format=openapi HTTP/1.1" 500 222984
+[INFO] 2025-07-22 15:11:05,070 autoreload 52602 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 15:11:05,316 autoreload 52679 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:11:06,151 basehttp 52679 6134067200 "GET /swagger/ HTTP/1.1" 200 2211
+[ERROR] 2025-07-22 15:11:06,234 log 52679 6134067200 Internal Server Error: /swagger/
+Traceback (most recent call last):
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/views.py", line 112, in get
+    schema = generator.get_schema(request, self.public)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 276, in get_schema
+    paths, prefix = self.get_paths(endpoints, components, request, public)
+                    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 482, in get_paths
+    operation = self.get_operation(view, path, prefix, method, components, request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 524, in get_operation
+    operation = view_inspector.get_operation(operation_keys)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 45, in get_operation
+    responses = self.get_responses()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 180, in get_responses
+    response_serializers = self.get_response_serializers()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 235, in get_response_serializers
+    responses = self.get_default_responses()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 211, in get_default_responses
+    default_schema = self.serializer_to_schema(default_schema) or ''
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 438, in serializer_to_schema
+    return self.probe_inspectors(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        self.field_inspectors, 'get_schema', serializer, {'field_inspectors': self.field_inspectors}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 110, in probe_inspectors
+    result = method(obj, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 49, in get_schema
+    return self.probe_field_inspectors(serializer, openapi.Schema, self.use_definitions)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 228, in probe_field_inspectors
+    return self.probe_inspectors(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        self.field_inspectors, 'field_to_swagger_object', field, {'field_inspectors': self.field_inspectors},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        swagger_object_type=swagger_object_type, use_references=use_references, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 110, in probe_inspectors
+    result = method(obj, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 140, in field_to_swagger_object
+    actual_schema = definitions.setdefault(ref_name, make_schema_definition)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/openapi.py", line 685, in setdefault
+    ret = maker()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 109, in make_schema_definition
+    for property_name, child in serializer.fields.items():
+                                ^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+                                         ~~~~~~~~~^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 374, in fields
+    for key, value in self.get_fields().items():
+                      ~~~~~~~~~~~~~~~^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 1105, in get_fields
+    field_class, field_kwargs = self.build_field(
+                                ~~~~~~~~~~~~~~~~^
+        source, info, model, depth
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 1251, in build_field
+    return self.build_unknown_field(field_name, model_class)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/serializers.py", line 1369, in build_unknown_field
+    raise ImproperlyConfigured(
+    ...<2 lines>...
+    )
+django.core.exceptions.ImproperlyConfigured: Field name `school_location_title` is not valid for model `StudentProfile` in `users.serializers.StudentProfileSerializer`.
+[ERROR] 2025-07-22 15:11:06,238 basehttp 52679 6134067200 "GET /swagger/?format=openapi HTTP/1.1" 500 223436
+[INFO] 2025-07-22 15:11:15,769 autoreload 52679 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 15:11:16,069 autoreload 52726 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:11:21,687 basehttp 52726 6157119488 "GET /swagger/ HTTP/1.1" 200 2211
+[ERROR] 2025-07-22 15:11:21,795 log 52726 6157119488 Internal Server Error: /swagger/
+Traceback (most recent call last):
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/views.py", line 112, in get
+    schema = generator.get_schema(request, self.public)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 276, in get_schema
+    paths, prefix = self.get_paths(endpoints, components, request, public)
+                    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 482, in get_paths
+    operation = self.get_operation(view, path, prefix, method, components, request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/generators.py", line 524, in get_operation
+    operation = view_inspector.get_operation(operation_keys)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 45, in get_operation
+    responses = self.get_responses()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 182, in get_responses
+    responses=self.get_response_schemas(response_serializers)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/view.py", line 259, in get_response_schemas
+    response.schema = self.serializer_to_schema(serializer)
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 438, in serializer_to_schema
+    return self.probe_inspectors(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        self.field_inspectors, 'get_schema', serializer, {'field_inspectors': self.field_inspectors}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 110, in probe_inspectors
+    result = method(obj, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 49, in get_schema
+    return self.probe_field_inspectors(serializer, openapi.Schema, self.use_definitions)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 228, in probe_field_inspectors
+    return self.probe_inspectors(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        self.field_inspectors, 'field_to_swagger_object', field, {'field_inspectors': self.field_inspectors},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        swagger_object_type=swagger_object_type, use_references=use_references, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 110, in probe_inspectors
+    result = method(obj, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 140, in field_to_swagger_object
+    actual_schema = definitions.setdefault(ref_name, make_schema_definition)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/openapi.py", line 685, in setdefault
+    ret = maker()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 116, in make_schema_definition
+    child_schema = self.probe_field_inspectors(
+        child, ChildSwaggerType, use_references, **prop_kwargs
+    )
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 228, in probe_field_inspectors
+    return self.probe_inspectors(
+           ~~~~~~~~~~~~~~~~~~~~~^
+        self.field_inspectors, 'field_to_swagger_object', field, {'field_inspectors': self.field_inspectors},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        swagger_object_type=swagger_object_type, use_references=use_references, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/base.py", line 110, in probe_inspectors
+    result = method(obj, **kwargs)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/drf_yasg/inspectors/field.py", line 148, in field_to_swagger_object
+    raise SwaggerGenerationError(
+    ...<2 lines>...
+        % (actual_serializer, this_serializer))
+drf_yasg.errors.SwaggerGenerationError: Schema for <class 'users.serializers.StudentProfileSerializer'> would override distinct serializer <class 'users.serializers.StudentProfileSerializer'> because they implicitly share the same ref_name; explicitly set the ref_name attribute on both serializers' Meta classes
+[ERROR] 2025-07-22 15:11:21,797 basehttp 52726 6157119488 "GET /swagger/?format=openapi HTTP/1.1" 500 266235
+[INFO] 2025-07-22 15:12:33,500 autoreload 52726 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 15:12:33,856 autoreload 52986 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:14:17,921 autoreload 52986 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 15:14:18,238 autoreload 53334 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:14:20,392 autoreload 53334 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 15:14:20,614 autoreload 53347 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:15:57,450 autoreload 53347 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:15:57,751 autoreload 53667 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:15:59,971 autoreload 53667 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:16:00,204 autoreload 53684 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:16:10,607 autoreload 53684 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:16:10,853 autoreload 53724 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:16:12,089 autoreload 53724 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:16:12,302 autoreload 53731 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:16:17,590 autoreload 53731 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:16:17,818 autoreload 53762 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:16:24,972 basehttp 53762 6164590592 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:16:25,161 basehttp 53762 6164590592 "GET /swagger/?format=openapi HTTP/1.1" 200 29672
+[INFO] 2025-07-22 15:18:35,218 autoreload 53762 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/taxi/urls.py changed, reloading.
+[INFO] 2025-07-22 15:18:35,554 autoreload 54206 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:18:41,914 autoreload 54206 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/taxi/urls.py changed, reloading.
+[INFO] 2025-07-22 15:18:42,134 autoreload 54236 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:18:51,289 autoreload 54288 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:20:42,765 autoreload 54288 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 15:20:43,085 autoreload 54649 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:20:48,403 autoreload 54649 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 15:20:48,631 autoreload 54676 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:20:53,920 autoreload 54676 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 15:20:54,144 autoreload 54703 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:20:56,345 autoreload 54703 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 15:20:56,570 autoreload 54718 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:20:59,813 autoreload 54718 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 15:21:00,041 autoreload 54731 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:21:39,357 autoreload 54731 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 15:21:39,670 autoreload 54864 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:21:40,860 autoreload 54864 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 15:21:41,070 autoreload 54870 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:21:42,229 autoreload 54870 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 15:21:42,431 autoreload 54881 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:21:55,967 autoreload 54881 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
+[INFO] 2025-07-22 15:21:56,263 autoreload 54927 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:23:15,739 autoreload 54927 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:23:16,081 autoreload 55187 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:23:39,956 autoreload 55187 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/taxi/settings.py changed, reloading.
+[INFO] 2025-07-22 15:23:40,206 autoreload 55276 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:23:45,507 autoreload 55276 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/taxi/settings.py changed, reloading.
+[INFO] 2025-07-22 15:23:45,764 autoreload 55301 8244539968 Watching for file changes with StatReloader
+[WARNING] 2025-07-22 15:24:00,199 log 55301 6155923456 Not Found: /api/users/send-otp/
+[WARNING] 2025-07-22 15:24:00,201 basehttp 55301 6155923456 "POST /api/users/send-otp/ HTTP/1.1" 404 3104
+[WARNING] 2025-07-22 15:24:14,046 log 55301 6155923456 Not Found: /api/users/send-otp/
+[WARNING] 2025-07-22 15:24:14,046 basehttp 55301 6155923456 "POST /api/users/send-otp/ HTTP/1.1" 404 3104
+[INFO] 2025-07-22 15:24:27,495 basehttp 55301 6155923456 "POST /api/Users/send-otp/ HTTP/1.1" 200 71
+[INFO] 2025-07-22 15:25:28,134 autoreload 55301 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:25:28,481 autoreload 55676 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:25:53,417 autoreload 55676 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:25:53,732 autoreload 55766 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:25:56,526 basehttp 55766 6122598400 "POST /api/Users/send-otp/ HTTP/1.1" 200 87
+[WARNING] 2025-07-22 15:26:06,013 log 55766 6122598400 Bad Request: /api/Users/verify-otp/
+[WARNING] 2025-07-22 15:26:06,014 basehttp 55766 6122598400 "POST /api/Users/verify-otp/ HTTP/1.1" 400 66
+[INFO] 2025-07-22 15:30:01,698 autoreload 55766 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/models.py changed, reloading.
+[INFO] 2025-07-22 15:30:02,064 autoreload 56546 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:32:02,441 autoreload 56997 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:32:05,447 basehttp 56997 6190100480 "POST /api/Users/send-otp/ HTTP/1.1" 200 87
+[WARNING] 2025-07-22 15:32:10,538 log 56997 6190100480 Bad Request: /api/Users/verify-otp/
+[WARNING] 2025-07-22 15:32:10,538 basehttp 56997 6190100480 "POST /api/Users/verify-otp/ HTTP/1.1" 400 66
+[INFO] 2025-07-22 15:34:02,334 autoreload 56997 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:34:02,683 autoreload 57389 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:34:05,966 basehttp 57389 6202503168 "POST /api/Users/send-otp/ HTTP/1.1" 200 87
+[INFO] 2025-07-22 15:34:09,370 basehttp 57389 6202503168 "POST /api/Users/send-otp/ HTTP/1.1" 200 87
+[INFO] 2025-07-22 15:34:09,962 basehttp 57389 6202503168 "POST /api/Users/send-otp/ HTTP/1.1" 200 87
+[INFO] 2025-07-22 15:34:20,057 basehttp 57389 6202503168 "POST /api/Users/verify-otp/ HTTP/1.1" 200 964
+[INFO] 2025-07-22 15:35:10,008 autoreload 57389 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:35:10,338 autoreload 57618 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:35:12,297 basehttp 57618 6136754176 "POST /api/Users/send-otp/ HTTP/1.1" 200 87
+[INFO] 2025-07-22 15:35:19,037 basehttp 57618 6136754176 "POST /api/Users/verify-otp/ HTTP/1.1" 200 964
+[INFO] 2025-07-22 15:36:11,473 autoreload 57618 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:36:11,796 autoreload 57823 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:37:54,063 autoreload 57823 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:37:54,358 autoreload 58150 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:38:53,228 autoreload 58150 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:38:53,553 autoreload 58340 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:39:12,293 autoreload 58340 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:39:12,701 autoreload 58411 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:39:24,160 autoreload 58411 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:39:24,388 autoreload 58455 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:40:36,738 autoreload 58455 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:40:37,072 autoreload 58691 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:40:39,034 basehttp 58691 6204665856 "POST /api/Users/send-otp/ HTTP/1.1" 200 87
+[INFO] 2025-07-22 15:40:43,976 basehttp 58691 6204665856 "POST /api/Users/verify-otp/ HTTP/1.1" 200 964
+[INFO] 2025-07-22 15:41:15,468 autoreload 58691 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/serializers.py changed, reloading.
+[INFO] 2025-07-22 15:41:15,843 autoreload 58830 8244539968 Watching for file changes with StatReloader
+[WARNING] 2025-07-22 15:41:18,346 log 58830 6133329920 Bad Request: /api/Users/verify-otp/
+[WARNING] 2025-07-22 15:41:18,346 basehttp 58830 6133329920 "POST /api/Users/verify-otp/ HTTP/1.1" 400 66
+[INFO] 2025-07-22 15:41:21,838 basehttp 58830 6133329920 "POST /api/Users/send-otp/ HTTP/1.1" 200 87
+[INFO] 2025-07-22 15:41:39,447 basehttp 58830 6133329920 "POST /api/Users/verify-otp/ HTTP/1.1" 200 985
+[INFO] 2025-07-22 15:44:27,278 autoreload 58830 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:44:27,645 autoreload 59452 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:44:28,866 autoreload 59452 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:44:29,092 autoreload 59461 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:44:51,942 autoreload 59461 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:44:52,250 autoreload 59544 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:44:58,635 autoreload 59544 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/views/auth_views.py changed, reloading.
+[INFO] 2025-07-22 15:44:58,877 autoreload 59572 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-22 15:45:08,935 basehttp 59572 6126022656 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:45:09,119 basehttp 59572 6126022656 "GET /swagger/?format=openapi HTTP/1.1" 200 27954
+[INFO] 2025-07-22 15:45:09,604 basehttp 59572 6126022656 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:45:09,720 basehttp 59572 6126022656 "GET /swagger/?format=openapi HTTP/1.1" 200 27954
+[INFO] 2025-07-22 15:45:09,977 basehttp 59572 6126022656 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:45:10,051 basehttp 59572 6126022656 "GET /swagger/?format=openapi HTTP/1.1" 200 27954
+[INFO] 2025-07-22 15:45:10,193 basehttp 59572 6126022656 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:45:10,276 basehttp 59572 6126022656 "GET /swagger/?format=openapi HTTP/1.1" 200 27954
+[INFO] 2025-07-22 15:45:10,355 basehttp 59572 6126022656 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:45:10,425 basehttp 59572 6126022656 "GET /swagger/?format=openapi HTTP/1.1" 200 27954
+[INFO] 2025-07-22 15:45:10,507 basehttp 59572 6126022656 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:45:10,573 basehttp 59572 6126022656 "GET /swagger/?format=openapi HTTP/1.1" 200 27954
+[INFO] 2025-07-22 15:45:10,644 basehttp 59572 6126022656 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:45:10,725 basehttp 59572 6126022656 "GET /swagger/?format=openapi HTTP/1.1" 200 27954
+[INFO] 2025-07-22 15:45:10,783 basehttp 59572 6126022656 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:45:10,848 basehttp 59572 6126022656 "GET /swagger/?format=openapi HTTP/1.1" 200 27954
+[INFO] 2025-07-22 15:45:10,915 basehttp 59572 6126022656 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:45:10,978 basehttp 59572 6126022656 "GET /swagger/?format=openapi HTTP/1.1" 200 27954
+[INFO] 2025-07-22 15:45:11,041 basehttp 59572 6126022656 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:45:11,117 basehttp 59572 6126022656 "GET /swagger/?format=openapi HTTP/1.1" 200 27954
+[INFO] 2025-07-22 15:45:11,154 basehttp 59572 6126022656 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-22 15:45:11,214 basehttp 59572 6126022656 "GET /swagger/?format=openapi HTTP/1.1" 200 27954
+[WARNING] 2025-07-22 15:45:13,933 log 59572 6126022656 Not Found: /
+[WARNING] 2025-07-22 15:45:13,934 basehttp 59572 6126022656 "GET / HTTP/1.1" 404 3028
+[INFO] 2025-07-22 15:45:18,965 basehttp 59572 6126022656 "GET /redoc/ HTTP/1.1" 200 925
+[INFO] 2025-07-22 15:45:18,977 basehttp 59572 6126022656 "GET /static/drf-yasg/redoc-init.js HTTP/1.1" 304 0
+[INFO] 2025-07-22 15:45:18,978 basehttp 59572 6142849024 "GET /static/drf-yasg/redoc/redoc.min.js HTTP/1.1" 304 0
+[INFO] 2025-07-22 15:45:19,081 basehttp 59572 6142849024 "GET /redoc/?format=openapi HTTP/1.1" 200 27954
+[WARNING] 2025-07-22 15:45:24,896 log 59572 6142849024 Not Found: /^static/
+[WARNING] 2025-07-22 15:45:24,896 basehttp 59572 6142849024 "GET /%5Estatic/ HTTP/1.1" 404 3072

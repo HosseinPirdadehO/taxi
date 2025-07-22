@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+
 import os
 from datetime import timedelta
 from pathlib import Path
@@ -23,7 +24,9 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'False'
 
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS',
                           'localhost,127.0.0.1').split(',')
-
+#
+INCLUDE_OTP_IN_RESPONSE = True
+#
 # ========== INSTALLED APPS ==========
 INSTALLED_APPS = [
     # Default Django apps
@@ -145,6 +148,10 @@ REST_FRAMEWORK = {
     },
     'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
     'UNAUTHENTICATED_USER': None,
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+    ]
 }
 
 # ========== SIMPLE JWT ==========
@@ -182,6 +189,10 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 
 # ========== LOGGING ==========
+
+LOG_DIR = BASE_DIR / 'logs'
+LOG_DIR.mkdir(exist_ok=True)
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

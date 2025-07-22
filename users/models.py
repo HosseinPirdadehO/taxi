@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.utils.translation import gettext as _
 from django.contrib.auth.models import BaseUserManager
 import uuid
@@ -410,10 +411,6 @@ class SuperAdminProfile(models.Model):
 
 
 class PhoneOTP(models.Model):
-    """
-    مدل کد تأیید (OTP) برای ثبت‌نام، ورود و تغییر شماره موبایل
-    """
-
     PURPOSE_CHOICES = (
         ('registration', _('ثبت‌نام')),
         ('login', _('ورود')),
@@ -422,7 +419,7 @@ class PhoneOTP(models.Model):
     )
 
     phone_number = models.CharField(
-        max_length=15, verbose_name=_("شماره موبایل"))
+        max_length=15, db_index=True, verbose_name=_("شماره موبایل"))
     code = models.CharField(max_length=128, verbose_name=_("کد هش‌شده"))
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name=_("زمان ایجاد"))
@@ -442,25 +439,27 @@ class PhoneOTP(models.Model):
         return f"{self.phone_number} - {self.get_purpose_display()}"
 
     def is_expired(self):
-        """بررسی منقضی شدن کد (۲ دقیقه اعتبار)"""
-        expiration_duration = timedelta(minutes=2)
+        expiration_minutes = getattr(settings, 'OTP_EXPIRATION_MINUTES', 2)
+        expiration_duration = timedelta(minutes=expiration_minutes)
         return timezone.now() > self.created_at + expiration_duration
 
     def increase_failed_attempts(self):
-        """افزایش تعداد تلاش‌های ناموفق و ذخیره"""
         self.failed_attempts += 1
         self.save(update_fields=['failed_attempts'])
 
-    def verify_code(self, input_code):
-        """
-        بررسی صحت کد OTP ورودی
-        برمی‌گرداند: (bool, پیام ترجمه شده)
-        """
+    def set_code(self, raw_code):
+        self.code = hashlib.sha256(raw_code.encode()).hexdigest()
+        self.is_verified = False
+        self.failed_attempts = 0
+        self.created_at = timezone.now()
+        self.save()
 
+    def verify_code(self, input_code):
         if self.is_verified:
             return False, _("کد قبلاً استفاده شده است.")
 
-        if self.failed_attempts >= 5:
+        max_failed = getattr(settings, 'OTP_MAX_FAILED_ATTEMPTS', 5)
+        if self.failed_attempts >= max_failed:
             return False, _("تعداد تلاش‌های ناموفق بیش از حد مجاز است.")
 
         if self.is_expired():
@@ -471,6 +470,8 @@ class PhoneOTP(models.Model):
             self.increase_failed_attempts()
             return False, _("کد تأیید اشتباه است.")
 
+        self.is_verified = True
+        self.save(update_fields=['is_verified'])
         return True, _("تأیید موفق بود.")
 
 

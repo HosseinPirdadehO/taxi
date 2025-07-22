@@ -1,25 +1,17 @@
-from users.serializers import FullUserProfileSerializer, CompleteProfileSerializer
-from rest_framework.permissions import IsAuthenticated
-import logging
-from users.models import RoleTypes
-from users.serializers import FullUserProfileSerializer
-from rest_framework import permissions, status
-from users.serializers import CompleteProfileSerializer
-from rest_framework import status, permissions
-from users.models import Referral
-from django.utils.translation import gettext_lazy as _
-from users.serializers import UserRegisterWithReferralSerializer
-from rest_framework import status
-from rest_framework import generics, permissions
-import random
-import hashlib
 from datetime import timedelta
+import hashlib
+import random
+
 from django.conf import settings
 from django.db import transaction
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
-from rest_framework import generics, permissions, status
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
+
+from rest_framework import generics, permissions, serializers, status
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -28,19 +20,27 @@ from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter, OrderingFilter
+
 from users.mixins import StandardResponseMixin
 from users.models import (
     User, PhoneOTP, Referral,
     DriverProfile, ParentProfile, StudentProfile, SchoolProfile,
-    TransportAdminProfile, EducationAdminProfile, SuperAdminProfile
+    TransportAdminProfile, EducationAdminProfile, SuperAdminProfile,
+    RoleTypes
 )
 from users.serializers import (
     SendOTPSerializer, OTPVerifySerializer, TokenResponseSerializer,
     ChangePhoneRequestSerializer, ChangePhoneVerifySerializer,
     ResendOTPSerializer, SetPasswordSerializer, PasswordResetSerializer,
-    ReferralMineSerializer, ReferralInviterSerializer
+    ReferralMineSerializer, ReferralInviterSerializer,
+    FullUserProfileSerializer, CompleteProfileSerializer, UserSerializer,
+    SchoolAdminProfileSerializer, DriverProfileSerializer, StudentProfileSerializer,
+    UserRegisterWithReferralSerializer
 )
 
+import logging
 logger = logging.getLogger(__name__)
 
 # logger.debug("جزئیات دیباگ")
@@ -60,41 +60,35 @@ PROFILE_MODEL_MAP = {
 }
 
 
-class SendOTPView(StandardResponseMixin, APIView):
+class SendOTPView(StandardResponseMixin, generics.GenericAPIView):
     permission_classes = [permissions.AllowAny]
+    serializer_class = SendOTPSerializer
 
     @swagger_auto_schema(
         request_body=SendOTPSerializer,
-        responses={200: openapi.Response('کد تایید ارسال شد')}
+        responses={200: openapi.Response('کد تأیید ارسال شد')}
     )
     def post(self, request):
-        serializer = SendOTPSerializer(data=request.data)
+        serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
         phone = serializer.validated_data['phone_number']
         raw_code = str(random.randint(1000, 9999))
-        hashed_code = hashlib.sha256(raw_code.encode()).hexdigest()
 
-        PhoneOTP.objects.filter(phone_number=phone, is_verified=False).delete()
-
-        PhoneOTP.objects.update_or_create(
+        otp_obj, created = PhoneOTP.objects.get_or_create(
             phone_number=phone,
-            defaults={
-                'code': hashed_code,
-                'is_verified': False,
-                'created_at': timezone.now(),
-                'failed_attempts': 0,
-                'purpose': 'registration'
-            }
+            defaults={'purpose': 'registration'}
         )
+        otp_obj.set_code(raw_code)  # متد مدل برای تنظیم کد و ریست وضعیت
 
         # TODO: ارسال واقعی SMS با raw_code
-        print(f" OTP for {phone} is {raw_code}")
+        print(f"OTP for {phone} is {raw_code}")
 
         return self.standard_response(
             success=True,
             message="کد تأیید ارسال شد.",
-            data={}
+            # فقط برای تست در فرانت‌اند ارسال می‌شود
+            data={"otp_code": raw_code}
         )
 
 
@@ -106,7 +100,7 @@ class VerifyOTPView(StandardResponseMixin, generics.GenericAPIView):
         request_body=OTPVerifySerializer,
         responses={
             200: openapi.Response('ورود یا ثبت‌نام موفق', TokenResponseSerializer),
-            400: 'کد تایید اشتباه یا منقضی شده',
+            400: 'کد تأیید اشتباه یا منقضی شده',
             403: 'محدودیت دسترسی',
         }
     )
@@ -120,7 +114,8 @@ class VerifyOTPView(StandardResponseMixin, generics.GenericAPIView):
         purpose = serializer.validated_data.get('purpose', 'registration')
 
         otp_queryset = PhoneOTP.objects.filter(
-            phone_number=phone, is_verified=False, purpose=purpose)
+            phone_number=phone, is_verified=False, purpose=purpose
+        )
 
         try:
             otp_obj = otp_queryset.latest('created_at')
@@ -131,65 +126,24 @@ class VerifyOTPView(StandardResponseMixin, generics.GenericAPIView):
         if not valid:
             return self.error_response(message=msg)
 
-        otp_obj.is_verified = True
-        otp_obj.save(update_fields=['is_verified'])
-
-        # تغییر شماره موبایل
         if purpose == "change_phone":
-            if not request.user.is_authenticated:
-                return self.error_response("برای تغییر شماره ابتدا وارد شوید.", status.HTTP_403_FORBIDDEN)
+            return self._handle_change_phone(request, phone)
 
-            if User.objects.filter(phone_number=phone).exclude(id=request.user.id).exists():
-                return self.error_response("این شماره قبلاً توسط کاربر دیگری استفاده شده است.", status.HTTP_400_BAD_REQUEST)
-
-            request.user.phone_number = phone
-            request.user.is_phone_verified = True
-            request.user.save()
-
-            return self.success_response(
-                message="شماره تلفن با موفقیت تغییر یافت.",
-                user=request.user
-            )
-
-        # ثبت‌نام یا ورود
         user, created = User.objects.get_or_create(phone_number=phone)
-
         if created:
-            user.is_active = True
-            user.is_phone_verified = True
+            self._initialize_new_user(user, phone, referral_code)
 
-            # نقش خاص برای شماره‌های خاص
-            special_phones = getattr(settings, 'SPECIAL_ADMIN_PHONES', [])
-            if phone in special_phones:
-                user.system_role = User.SystemRole.SUPERADMIN
-                user.is_staff = True
-                user.is_superuser = True
-            else:
-                user.role = User.RoleTypes.USER
-
-            # ثبت معرف
-            if referral_code:
-                inviter = User.objects.filter(
-                    referral_code=referral_code).first()
-                if inviter:
-                    Referral.objects.create(
-                        inviter=inviter,
-                        invited=user,
-                        referral_code_used=referral_code
-                    )
-
-            user.save()
-
-        refresh = RefreshToken.for_user(user)
+        tokens = self._generate_tokens_for_user(user)
         profile_complete = all([user.first_name, user.last_name])
 
-        token_data = {
-            'access': str(refresh.access_token),
-            'refresh': str(refresh),
+        response_data = {
+            'access': tokens['access'],
+            'refresh': tokens['refresh'],
             'profile_complete': profile_complete,
+            'is_first_login': created,
         }
 
-        token_serializer = TokenResponseSerializer(data=token_data)
+        token_serializer = TokenResponseSerializer(data=response_data)
         token_serializer.is_valid(raise_exception=True)
 
         return self.success_response(
@@ -197,6 +151,53 @@ class VerifyOTPView(StandardResponseMixin, generics.GenericAPIView):
             data=token_serializer.data,
             user=user
         )
+
+    def _handle_change_phone(self, request, phone):
+        if not request.user.is_authenticated:
+            return self.error_response(
+                "برای تغییر شماره ابتدا وارد شوید.", status.HTTP_403_FORBIDDEN)
+
+        if User.objects.filter(phone_number=phone).exclude(id=request.user.id).exists():
+            return self.error_response(
+                "این شماره قبلاً توسط کاربر دیگری استفاده شده است.", status.HTTP_400_BAD_REQUEST)
+
+        request.user.phone_number = phone
+        request.user.is_phone_verified = True
+        request.user.save()
+
+        return self.success_response(
+            message="شماره تلفن با موفقیت تغییر یافت.",
+            user=request.user
+        )
+
+    def _initialize_new_user(self, user, phone, referral_code):
+        user.is_active = True
+        user.is_phone_verified = True
+
+        special_phones = getattr(settings, 'SPECIAL_ADMIN_PHONES', [])
+        if phone in special_phones:
+            user.system_role = User.SystemRole.SUPERADMIN
+            user.is_staff = True
+            user.is_superuser = True
+        else:
+            user.role = User.RoleTypes.USER
+
+        if referral_code:
+            inviter = User.objects.filter(referral_code=referral_code).first()
+            if inviter:
+                Referral.objects.create(
+                    inviter=inviter,
+                    invited=user,
+                    referral_code_used=referral_code
+                )
+        user.save()
+
+    def _generate_tokens_for_user(self, user):
+        refresh = RefreshToken.for_user(user)
+        return {
+            'access': str(refresh.access_token),
+            'refresh': str(refresh)
+        }
 
 
 class LogoutView(StandardResponseMixin, APIView):
@@ -464,6 +465,11 @@ class RegisterUserWithReferralView(StandardResponseMixin, generics.CreateAPIView
 class MyReferralsView(StandardResponseMixin, generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = ReferralMineSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['status', 'created_at']
+    search_fields = ['invited_user__phone_number']
+    ordering_fields = ['created_at']
+    ordering = ['-created_at']
 
     @swagger_auto_schema(
         operation_summary="لیست کاربران دعوت‌شده توسط من",
@@ -480,21 +486,42 @@ class MyReferralsView(StandardResponseMixin, generics.ListAPIView):
 class MyInviterView(StandardResponseMixin, generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = ReferralInviterSerializer
+    # filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    # filterset_fields = ['status', 'created_at']
+    # search_fields = ['invited_user__phone_number']
+    # ordering_fields = ['created_at']
+    # ordering = ['-created_at']
 
     @swagger_auto_schema(
         operation_summary="مشاهده دعوت‌کننده من",
         operation_description="نمایش اطلاعات کاربری که این کاربر را دعوت کرده است.",
-        responses={200: ReferralInviterSerializer()}
+        responses={
+            200: openapi.Response(
+                description="دعوت‌کننده یافت شد",
+                schema=ReferralInviterSerializer
+            ),
+            404: "کاربر دعوت‌کننده‌ای ندارد."
+        }
     )
     def get(self, request, *args, **kwargs):
-        return super().get(request, *args, **kwargs)
+        inviter = self.get_object()
+        if inviter is None:
+            return self.error_response(message="شما توسط هیچ کاربری دعوت نشده‌اید.", status_code=404)
+        serializer = self.get_serializer(inviter)
+        return self.success_response(data=serializer.data)
 
     def get_object(self):
-        return self.request.user.received_referral
+        referral = getattr(self.request.user, "received_referral", None)
+        return referral.inviter if referral else None
 
 
 class ReferralStatsView(StandardResponseMixin, generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
+    # filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    # filterset_fields = ['status', 'created_at']
+    # search_fields = ['invited_user__phone_number']
+    # ordering_fields = ['created_at']
+    # ordering = ['-created_at']
 
     @swagger_auto_schema(
         operation_summary="آمار رفرال‌های من",
@@ -528,6 +555,14 @@ class ReferralStatsView(StandardResponseMixin, generics.GenericAPIView):
 class CompleteProfileView(StandardResponseMixin, APIView):
     permission_classes = [permissions.IsAuthenticated]
 
+    @swagger_auto_schema(
+        operation_summary="دریافت اطلاعات کامل پروفایل",
+        operation_description="این متد اطلاعات کامل پروفایل کاربر لاگین‌شده را بازمی‌گرداند.",
+        responses={200: openapi.Response(
+            description="اطلاعات پروفایل کاربر",
+            schema=CompleteProfileSerializer
+        )}
+    )
     def get(self, request):
         user = request.user
         serializer = CompleteProfileSerializer(user)
@@ -538,10 +573,18 @@ class CompleteProfileView(StandardResponseMixin, APIView):
             status_code=status.HTTP_200_OK
         )
 
+    @swagger_auto_schema(
+        operation_summary="تکمیل یا بروزرسانی کامل پروفایل",
+        operation_description="تمام فیلدهای پروفایل باید ارسال شوند. اگر فیلدی ارسال نشود، مقدار قبلی پاک می‌شود.",
+        request_body=CompleteProfileSerializer,
+        responses={200: openapi.Response(
+            description="پروفایل با موفقیت بروزرسانی شد.",
+            schema=CompleteProfileSerializer
+        )}
+    )
     def put(self, request):
         user = request.user
-        serializer = CompleteProfileSerializer(
-            user, data=request.data, partial=False)
+        serializer = CompleteProfileSerializer(user, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return self.standard_response(
@@ -550,14 +593,22 @@ class CompleteProfileView(StandardResponseMixin, APIView):
                 data=serializer.data,
                 status_code=status.HTTP_200_OK
             )
-        else:
-            return self.standard_response(
-                success=False,
-                message="خطا در داده‌های ورودی.",
-                errors=serializer.errors,
-                status_code=status.HTTP_400_BAD_REQUEST
-            )
+        return self.standard_response(
+            success=False,
+            message="خطا در داده‌های ورودی.",
+            errors=serializer.errors,
+            status_code=status.HTTP_400_BAD_REQUEST
+        )
 
+    @swagger_auto_schema(
+        operation_summary="بروزرسانی جزئی پروفایل",
+        operation_description="فقط فیلدهایی که نیاز به تغییر دارند ارسال می‌شوند. فیلدهای دیگر تغییری نمی‌کنند.",
+        request_body=CompleteProfileSerializer,
+        responses={200: openapi.Response(
+            description="پروفایل با موفقیت بروزرسانی شد.",
+            schema=CompleteProfileSerializer
+        )}
+    )
     def patch(self, request):
         user = request.user
         serializer = CompleteProfileSerializer(
@@ -570,13 +621,12 @@ class CompleteProfileView(StandardResponseMixin, APIView):
                 data=serializer.data,
                 status_code=status.HTTP_200_OK
             )
-        else:
-            return self.standard_response(
-                success=False,
-                message="خطا در داده‌های ورودی.",
-                errors=serializer.errors,
-                status_code=status.HTTP_400_BAD_REQUEST
-            )
+        return self.standard_response(
+            success=False,
+            message="خطا در داده‌های ورودی.",
+            errors=serializer.errors,
+            status_code=status.HTTP_400_BAD_REQUEST
+        )
 
 
 class IsAdminOrReadOnly(permissions.BasePermission):
@@ -755,3 +805,101 @@ class UserMeView(StandardResponseMixin, generics.RetrieveUpdateAPIView):
             user.city,
         ]
         return all(required_fields)
+
+
+class TestTokenView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        return Response({
+            "message": "توکن معتبر است.",
+            "user_phone": user.phone_number,
+            "user_id": str(user.id),
+            "user_full_name": user.get_full_name(),
+        })
+
+
+# ---- ----
+
+
+User = get_user_model()
+
+
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['role', 'is_active', 'date_joined']
+    filterset_fields = ['role', 'is_active',
+                        'date_joined', 'first_name', 'last_name']
+    search_fields = ['phone_number',
+                     'national_code', 'first_name', 'last_name']
+    ordering = ['-date_joined']
+
+
+class SchoolListView(generics.ListAPIView):
+    queryset = SchoolProfile.objects.all()
+    serializer_class = SchoolAdminProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['city', 'region', 'school_name']
+    search_fields = ['school_name', 'address', 'city']
+    ordering_fields = ['school_name', 'city']
+    ordering = ['school_name']
+
+
+class DriverListView(generics.ListAPIView):
+    queryset = DriverProfile.objects.all()
+    serializer_class = DriverProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['vehicle_type', 'license_status']
+    search_fields = ['user__phone_number', 'license_number',
+                     'user__first_name', 'user__last_name']
+    ordering_fields = ['license_number', 'user__first_name']
+    ordering = ['user__first_name']
+
+
+class StudentListView(generics.ListAPIView):
+    queryset = StudentProfile.objects.all()
+    serializer_class = StudentProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_fields = ['grade', 'is_active', 'school_location']
+    search_fields = [
+        'user__phone_number',
+        'user__first_name',
+        'user__last_name',
+        'school_id_code',
+        'class_name',
+    ]
+    ordering_fields = ['grade', 'user__first_name', 'class_name']
+    ordering = ['user__first_name']
+
+
+class TransportAdminListView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        return User.objects.filter(role=RoleTypes.TRANSPORT_ADMIN, is_active=True)
+
+
+class EducationAdminListView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        return User.objects.filter(role=RoleTypes.EDUCATION_ADMIN, is_active=True)
+
+
+class SuperAdminListView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        return User.objects.filter(role=RoleTypes.SUPER_ADMIN, is_active=True)
+# ---- -----

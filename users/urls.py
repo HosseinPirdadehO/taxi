@@ -1,4 +1,6 @@
 from django.urls import path
+from taxi import settings
+from django.conf.urls.static import static
 from users.views.auth_views import (
     SendOTPView,
     UserMeView,
@@ -14,9 +16,15 @@ from users.views.auth_views import (
     MyInviterView,
     MyReferralsView,
     ReferralStatsView,
-    UserRetrieveUpdateView
-
-
+    UserRetrieveUpdateView,
+    TestTokenView,
+    UserListView,
+    SchoolListView,
+    DriverListView,
+    StudentListView,
+    TransportAdminListView,
+    EducationAdminListView,
+    SuperAdminListView,
 )
 from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 
@@ -27,6 +35,7 @@ urlpatterns = [
     path('resend-otp/', ResendOTPView.as_view(), name='resend-otp'),
     # JWT Token
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('test-token/', TestTokenView.as_view(), name='test-token'),
     path('refresh-token/', TokenRefreshView.as_view(), name='token_refresh'),
     # Logout
     path('logout/', LogoutView.as_view(), name='auth_logout'),
@@ -45,12 +54,29 @@ urlpatterns = [
     # مشاهده، ویرایش کامل و جزئی پروفایل کاربر با شناسه (id)
     path('users/<uuid:pk>/', UserRetrieveUpdateView.as_view(), name='user-detail'),
     # بخش رفرال
-    path('Referral/', RegisterUserWithReferralView.as_view(),
+    path('referral/', RegisterUserWithReferralView.as_view(),
          name='register-with-referral'),
     path('referrals/mine/', MyReferralsView.as_view(), name='referral-mine'),
     path('referrals/inviter/', MyInviterView.as_view(), name='referral-inviter'),
     path('referrals/stats/', ReferralStatsView.as_view(), name='referral-stats'),
+    # لیست ها
+    path('users/', UserListView.as_view(), name='user-list'),
+    path('schools/', SchoolListView.as_view(), name='school-list'),
+    path('drivers/', DriverListView.as_view(), name='driver-list'),
+    path('student/', StudentListView.as_view(), name='Student-list'),
+    path('transport-admins/', TransportAdminListView.as_view(),
+         name='transport-admin-list'),
+    path('education-admins/', EducationAdminListView.as_view(),
+         name='education-admin-list'),
+    path('super-admins/', SuperAdminListView.as_view(),
+         name='super-admin-list'),
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
 
-# به سریال ساز های جدید تمام ایتم هارو اصافه کن بعضباشون فقط بوزر عادی
+# git add .
+# git commit -m 'june4'
+# git branch -M main
+# git push -u origin main

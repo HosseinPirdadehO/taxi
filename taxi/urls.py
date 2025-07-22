@@ -37,7 +37,7 @@ schema_view = get_schema_view(
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    path('api/users/', include('users.urls')),  # مثلاً مسیر اپ users
+    path('api/Users/', include('users.urls')),  # مثلاً مسیر اپ users
 
 
 
