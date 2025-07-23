@@ -1,3 +1,9 @@
+from django.http import Http404
+from rest_framework.exceptions import NotFound
+from users.serializers import StudentProfileSerializer, DriverProfileSerializer, ParentProfileSerializer
+from rest_framework import generics, permissions, status
+from users.models import StudentProfile, DriverProfile, ParentProfile
+from users.serializers import ParentProfileSerializer
 from datetime import timedelta
 import hashlib
 import random
@@ -28,7 +34,7 @@ from users.models import (
     User, PhoneOTP, Referral,
     DriverProfile, ParentProfile, StudentProfile, SchoolProfile,
     TransportAdminProfile, EducationAdminProfile, SuperAdminProfile,
-    RoleTypes
+    RoleTypes, Location
 )
 from users.serializers import (
     SendOTPSerializer, OTPVerifySerializer, TokenResponseSerializer,
@@ -37,9 +43,15 @@ from users.serializers import (
     ReferralMineSerializer, ReferralInviterSerializer,
     FullUserProfileSerializer, CompleteProfileSerializer, UserSerializer,
     SchoolAdminProfileSerializer, DriverProfileSerializer, StudentProfileSerializer,
-    UserRegisterWithReferralSerializer
+    UserRegisterWithReferralSerializer, LocationSerializer, OverviewReportSerializer,
+    RoleCountSerializer,
+    ReferralReportSerializer,
+    ActiveUserSerializer,
+    NewUserSerializer,
+    LocationStatsSerializer,
 )
-
+from rest_framework.permissions import IsAdminUser
+from django.db.models import Count, Sum
 import logging
 logger = logging.getLogger(__name__)
 
@@ -466,7 +478,7 @@ class MyReferralsView(StandardResponseMixin, generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = ReferralMineSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ['status', 'created_at']
+    filterset_fields = ['created_at']
     search_fields = ['invited_user__phone_number']
     ordering_fields = ['created_at']
     ordering = ['-created_at']
@@ -477,10 +489,18 @@ class MyReferralsView(StandardResponseMixin, generics.ListAPIView):
         responses={200: ReferralMineSerializer(many=True)}
     )
     def get(self, request, *args, **kwargs):
-        return super().get(request, *args, **kwargs)
+        logger.debug(
+            f"کاربر {request.user.id} درخواست لیست رفرال‌های خود را ارسال کرد.")
+        response = super().get(request, *args, **kwargs)
+        logger.debug(f"تعداد رفرال‌های بازگردانده شده: {len(response.data)}")
+        return response
 
     def get_queryset(self):
-        return Referral.objects.filter(inviter=self.request.user)
+        user = self.request.user
+        logger.debug(f"ایجاد کوئریست برای کاربر با شناسه {user.id}")
+        qs = Referral.objects.filter(inviter=user)
+        logger.debug(f"تعداد رفرال‌ها در کوئری: {qs.count()}")
+        return qs
 
 
 class MyInviterView(StandardResponseMixin, generics.RetrieveAPIView):
@@ -823,20 +843,20 @@ class TestTokenView(APIView):
 # ---- ----
 
 
-User = get_user_model()
-
-
 class UserListView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ['role', 'is_active', 'date_joined']
     filterset_fields = ['role', 'is_active',
                         'date_joined', 'first_name', 'last_name']
     search_fields = ['phone_number',
                      'national_code', 'first_name', 'last_name']
     ordering = ['-date_joined']
+
+    @swagger_auto_schema(operation_summary="دریافت لیست کاربران")
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
 
 
 class SchoolListView(generics.ListAPIView):
@@ -844,9 +864,15 @@ class SchoolListView(generics.ListAPIView):
     serializer_class = SchoolAdminProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ['city', 'region', 'school_name']
-    search_fields = ['school_name', 'address', 'city']
-    ordering_fields = ['school_name', 'city']
+
+    # فیلتر بر اساس نوع مدرسه و id مکان مدرسه (FK)
+    filterset_fields = ['school_type', 'school_location', 'school_name']
+
+    # جستجو در نام مدرسه و عنوان و آدرس مکان مدرسه (مربوط به FK)
+    search_fields = ['school_name',
+                     'school_location__title', 'school_location__address']
+
+    ordering_fields = ['school_name']
     ordering = ['school_name']
 
 
@@ -855,29 +881,41 @@ class DriverListView(generics.ListAPIView):
     serializer_class = DriverProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = ['vehicle_type', 'license_status']
+
+    # در مدل DriverProfile فیلدهای: car_type و is_verified وجود دارد
+    filterset_fields = ['car_type', 'is_verified']
+
+    # جستجو در شماره موبایل، شماره گواهینامه و نام راننده (از طریق user FK)
     search_fields = ['user__phone_number', 'license_number',
                      'user__first_name', 'user__last_name']
+
     ordering_fields = ['license_number', 'user__first_name']
     ordering = ['user__first_name']
+
+    @swagger_auto_schema(operation_summary="دریافت لیست رانندگان")
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
 
 
 class StudentListView(generics.ListAPIView):
     queryset = StudentProfile.objects.all()
     serializer_class = StudentProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
-
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+
+    # فیلتر بر اساس پایه، وضعیت فعال و id لوکیشن مدرسه (FK)
     filterset_fields = ['grade', 'is_active', 'school_location']
-    search_fields = [
-        'user__phone_number',
-        'user__first_name',
-        'user__last_name',
-        'school_id_code',
-        'class_name',
-    ]
+
+    # جستجو در شماره موبایل، نام و نام خانوادگی، کد مدرسه، نام کلاس
+    search_fields = ['user__phone_number', 'user__first_name',
+                     'user__last_name', 'school_id_code', 'class_name']
+
     ordering_fields = ['grade', 'user__first_name', 'class_name']
     ordering = ['user__first_name']
+
+    @swagger_auto_schema(operation_summary="دریافت لیست دانش‌آموزان")
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
 
 
 class TransportAdminListView(generics.ListAPIView):
@@ -887,6 +925,10 @@ class TransportAdminListView(generics.ListAPIView):
     def get_queryset(self):
         return User.objects.filter(role=RoleTypes.TRANSPORT_ADMIN, is_active=True)
 
+    @swagger_auto_schema(operation_summary="دریافت لیست ادمین‌های ترابری")
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
 
 class EducationAdminListView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -895,6 +937,10 @@ class EducationAdminListView(generics.ListAPIView):
     def get_queryset(self):
         return User.objects.filter(role=RoleTypes.EDUCATION_ADMIN, is_active=True)
 
+    @swagger_auto_schema(operation_summary="دریافت لیست ادمین‌های آموزشی")
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
 
 class SuperAdminListView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -902,4 +948,475 @@ class SuperAdminListView(generics.ListAPIView):
 
     def get_queryset(self):
         return User.objects.filter(role=RoleTypes.SUPER_ADMIN, is_active=True)
+
+    @swagger_auto_schema(operation_summary="دریافت لیست سوپرادمین‌ها")
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+
+class ParentListView(generics.ListAPIView):
+    queryset = ParentProfile.objects.select_related(
+        'user').filter(user__role=RoleTypes.PARENT)
+    serializer_class = ParentProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+
+    # جستجو در نام، نام خانوادگی و شماره موبایل والد
+    search_fields = ['user__first_name',
+                     'user__last_name', 'user__phone_number']
+
+    ordering_fields = ['user__first_name', 'user__date_joined']
+    ordering = ['-user__date_joined']
+
+    @swagger_auto_schema(operation_summary="دریافت لیست والدین")
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+# -----------------------
+
+
+class IsOwnerProfile(permissions.BasePermission):
+    """
+    اجازه می‌دهد فقط صاحب پروفایل بتواند دسترسی داشته باشد.
+    """
+
+    def has_object_permission(self, request, view, obj):
+        # فرض بر این است که هر پروفایل یک فیلد user دارد که FK به User است
+        return obj.user == request.user
+
+
+# ---------- دانش‌آموز -----------
+
+class StudentRetrieveUpdateView(generics.RetrieveUpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated, IsOwnerProfile]
+    serializer_class = StudentProfileSerializer
+    lookup_field = 'pk'
+
+    def get_queryset(self):
+        return StudentProfile.objects.all()
+
+    @swagger_auto_schema(
+        operation_summary="دریافت پروفایل دانش‌آموز با شناسه",
+        responses={200: StudentProfileSerializer}
+    )
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش کامل پروفایل دانش‌آموز با شناسه",
+        responses={200: StudentProfileSerializer}
+    )
+    def put(self, request, *args, **kwargs):
+        return super().put(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش جزئی پروفایل دانش‌آموز با شناسه",
+        responses={200: StudentProfileSerializer}
+    )
+    def patch(self, request, *args, **kwargs):
+        return super().patch(request, *args, **kwargs)
+
+
+class CurrentStudentProfileView(generics.RetrieveUpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = StudentProfileSerializer
+
+    @swagger_auto_schema(
+        operation_summary="دریافت یا ویرایش پروفایل دانش‌آموز فعلی",
+        responses={200: StudentProfileSerializer}
+    )
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+    def get_object(self):
+        try:
+            profile = StudentProfile.objects.get(user=self.request.user)
+        except StudentProfile.DoesNotExist:
+            from rest_framework.exceptions import NotFound
+            raise NotFound("پروفایل دانش‌آموز یافت نشد.")
+        self.check_object_permissions(self.request, profile)
+        return profile
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش کامل پروفایل دانش‌آموز فعلی",
+        responses={200: StudentProfileSerializer}
+    )
+    def put(self, request, *args, **kwargs):
+        return super().put(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش جزئی پروفایل دانش‌آموز فعلی",
+        responses={200: StudentProfileSerializer}
+    )
+    def patch(self, request, *args, **kwargs):
+        return super().patch(request, *args, **kwargs)
+
+
+# ---------- راننده -----------
+
+class DriverRetrieveUpdateView(generics.RetrieveUpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated, IsOwnerProfile]
+    serializer_class = DriverProfileSerializer
+    lookup_field = 'pk'
+
+    def get_queryset(self):
+        return DriverProfile.objects.all()
+
+    @swagger_auto_schema(
+        operation_summary="دریافت پروفایل راننده با شناسه",
+        responses={200: DriverProfileSerializer}
+    )
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش کامل پروفایل راننده با شناسه",
+        responses={200: DriverProfileSerializer}
+    )
+    def put(self, request, *args, **kwargs):
+        return super().put(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش جزئی پروفایل راننده با شناسه",
+        responses={200: DriverProfileSerializer}
+    )
+    def patch(self, request, *args, **kwargs):
+        return super().patch(request, *args, **kwargs)
+
+
+class CurrentDriverProfileView(generics.RetrieveUpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = DriverProfileSerializer
+
+    @swagger_auto_schema(
+        operation_summary="دریافت یا ویرایش پروفایل راننده فعلی",
+        responses={200: DriverProfileSerializer}
+    )
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+    def get_object(self):
+        try:
+            profile = DriverProfile.objects.get(user=self.request.user)
+        except DriverProfile.DoesNotExist:
+            from rest_framework.exceptions import NotFound
+            raise NotFound("پروفایل راننده یافت نشد.")
+        self.check_object_permissions(self.request, profile)
+        return profile
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش کامل پروفایل راننده فعلی",
+        responses={200: DriverProfileSerializer}
+    )
+    def put(self, request, *args, **kwargs):
+        return super().put(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش جزئی پروفایل راننده فعلی",
+        responses={200: DriverProfileSerializer}
+    )
+    def patch(self, request, *args, **kwargs):
+        return super().patch(request, *args, **kwargs)
+
+
+# ---------- والد -----------
+
+class ParentRetrieveUpdateView(generics.RetrieveUpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated, IsOwnerProfile]
+    serializer_class = ParentProfileSerializer
+    lookup_field = 'pk'
+
+    def get_queryset(self):
+        return ParentProfile.objects.all()
+
+    @swagger_auto_schema(
+        operation_summary="دریافت پروفایل والد با شناسه",
+        responses={200: ParentProfileSerializer}
+    )
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش کامل پروفایل والد با شناسه",
+        responses={200: ParentProfileSerializer}
+    )
+    def put(self, request, *args, **kwargs):
+        return super().put(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش جزئی پروفایل والد با شناسه",
+        responses={200: ParentProfileSerializer}
+    )
+    def patch(self, request, *args, **kwargs):
+        return super().patch(request, *args, **kwargs)
+
+
+class CurrentParentProfileView(generics.RetrieveUpdateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ParentProfileSerializer
+
+    @swagger_auto_schema(
+        operation_summary="دریافت یا ویرایش پروفایل والد فعلی",
+        responses={200: ParentProfileSerializer}
+    )
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+    def get_object(self):
+        try:
+            profile = ParentProfile.objects.get(user=self.request.user)
+        except ParentProfile.DoesNotExist:
+            from rest_framework.exceptions import NotFound
+            raise NotFound("پروفایل والد یافت نشد.")
+        self.check_object_permissions(self.request, profile)
+        return profile
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش کامل پروفایل والد فعلی",
+        responses={200: ParentProfileSerializer}
+    )
+    def put(self, request, *args, **kwargs):
+        return super().put(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش جزئی پروفایل والد فعلی",
+        responses={200: ParentProfileSerializer}
+    )
+    def patch(self, request, *args, **kwargs):
+        return super().patch(request, *args, **kwargs)
 # ---- -----
+
+# Location
+
+
+class LocationListCreateView(generics.ListCreateAPIView):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    @swagger_auto_schema(
+        operation_summary="لیست مکان‌ها",
+        responses={200: LocationSerializer(many=True)}
+    )
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_summary="ایجاد مکان جدید",
+        request_body=LocationSerializer,
+        responses={201: LocationSerializer}
+    )
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
+
+
+class LocationRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    @swagger_auto_schema(
+        operation_summary="مشاهده جزئیات مکان",
+        responses={200: LocationSerializer}
+    )
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش کامل مکان",
+        request_body=LocationSerializer,
+        responses={200: LocationSerializer}
+    )
+    def put(self, request, *args, **kwargs):
+        return super().put(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_summary="ویرایش جزئی مکان",
+        request_body=LocationSerializer,
+        responses={200: LocationSerializer}
+    )
+    def patch(self, request, *args, **kwargs):
+        return super().patch(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_summary="حذف مکان",
+        responses={204: "Deleted"}
+    )
+    def delete(self, request, *args, **kwargs):
+        return super().delete(request, *args, **kwargs)
+
+
+class CurrentUserLocationView(generics.RetrieveAPIView):
+    serializer_class = LocationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    @swagger_auto_schema(
+        operation_summary="دریافت مکان کاربر فعلی",
+        responses={200: LocationSerializer, 404: 'Not Found'}
+    )
+    def get(self, request, *args, **kwargs):
+        logger.debug(f"کاربر {request.user.id} درخواست مکان خود را ارسال کرد.")
+        return super().get(request, *args, **kwargs)
+
+    def get_object(self):
+        user = self.request.user
+        location = None
+
+        if user.role == RoleTypes.STUDENT:
+            profile = getattr(user, 'studentprofile', None)
+            if profile:
+                location = profile.home_location or profile.school_location
+
+        elif user.role == RoleTypes.PARENT:
+            parent_profile = getattr(user, 'parentprofile', None)
+            if parent_profile:
+                locations = []
+                for student_profile in parent_profile.students.all():
+                    if student_profile.home_location:
+                        locations.append(student_profile.home_location)
+                    elif student_profile.school_location:
+                        locations.append(student_profile.school_location)
+                if locations:
+                    location = locations[0]
+
+        elif user.role == RoleTypes.SCHOOL_ADMIN:
+            profile = getattr(user, 'schoolprofile', None)
+            if profile:
+                location = profile.school_location
+
+        elif user.role == RoleTypes.DRIVER:
+            profile = getattr(user, 'driverprofile', None)
+            # اگر خواستیم لوکیشن راننده را اضافه کنید، اینجا قرار
+            location = None
+
+        elif user.role == RoleTypes.EDUCATION_ADMIN:
+            profile = getattr(user, 'educationadminprofile', None)
+            # location = profile.region_location if profile else None
+            location = None
+
+        elif user.role == RoleTypes.TRANSPORT_ADMIN:
+            profile = getattr(user, 'transportadminprofile', None)
+            # location = profile.region_location if profile else None
+            location = None
+
+        elif user.role == RoleTypes.SUPER_ADMIN:
+            profile = getattr(user, 'superadminprofile', None)
+            location = None
+
+        if location is None:
+            logger.warning(
+                f"لوکیشن برای کاربر {user.id} با نقش {user.role} یافت نشد.")
+            raise Http404("مکان برای کاربر پیدا نشد.")
+
+        return location
+
+# -----------------
+# -----------------
+# ----------------
+
+# تاریخچه‌ و آمارکلی
+
+
+class OverviewReportView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        operation_summary="آمار کلی کاربران",
+        responses={200: OverviewReportSerializer}
+    )
+    def get(self, request):
+        total_users = User.objects.count()
+        total_referrals = Referral.objects.count()
+        active_users_today = User.objects.filter(
+            last_login__date=timezone.now().date()).count()
+
+        data = {
+            "total_users": total_users,
+            "total_referrals": total_referrals,
+            "active_users_today": active_users_today
+        }
+        return Response(OverviewReportSerializer(data).data)
+
+
+class RoleCountReportView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        operation_summary="تعداد کاربران به تفکیک نقش",
+        responses={200: RoleCountSerializer(many=True)}
+    )
+    def get(self, request):
+        role_counts = User.objects.values("role").annotate(count=Count("id"))
+        return Response([RoleCountSerializer(role).data for role in role_counts])
+
+
+class ReferralReportView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        operation_summary="آمار دعوت کاربران",
+        responses={200: ReferralReportSerializer(many=True)}
+    )
+    def get(self, request):
+        stats = Referral.objects.values("inviter__phone_number").annotate(
+            invited_count=Count("invited"))
+        result = [
+            {"inviter_name": item["inviter__phone_number"],
+             "invited_count": item["invited_count"]}
+            for item in stats
+        ]
+        return Response([ReferralReportSerializer(r).data for r in result])
+
+
+class ActiveUsersReportView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        operation_summary="کاربران فعال ۷ روز اخیر",
+        responses={200: ActiveUserSerializer(many=True)}
+    )
+    def get(self, request):
+        since = timezone.now() - timedelta(days=7)
+        users = User.objects.filter(last_login__gte=since)
+        return Response([ActiveUserSerializer(u).data for u in users])
+
+
+class NewUsersReportView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        operation_summary="کاربران جدید ۷ روز اخیر",
+        responses={200: NewUserSerializer(many=True)}
+    )
+    def get(self, request):
+        since = timezone.now() - timedelta(days=7)
+        users = User.objects.filter(date_joined__gte=since)
+        return Response([NewUserSerializer(u).data for u in users])
+
+
+class LocationStatsReportView(APIView):
+    permission_classes = [IsAdminUser]
+
+    @swagger_auto_schema(
+        operation_summary="آمار کاربران بر اساس مکان",
+        responses={200: LocationStatsSerializer(many=True)}
+    )
+    def get(self, request):
+        locations = Location.objects.annotate(
+            student_count=Count("student_school"),
+            driver_count=Count("driver_home")
+        ).values("title", "student_count", "driver_count")
+
+        result = [
+            {
+                "location_name": l["title"],
+                "student_count": l["student_count"],
+                "driver_count": l["driver_count"]
+            } for l in locations
+        ]
+        return Response([LocationStatsSerializer(r).data for r in result])
+
+
+# -----------------
+# -----------------
+# -----------------

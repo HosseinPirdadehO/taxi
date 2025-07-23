@@ -1,7 +1,6 @@
 from import_export import resources, fields
 from import_export.widgets import ForeignKeyWidget
 from django.contrib.auth import get_user_model
-
 from .models import (
     ParentProfile,
     StudentProfile,
@@ -32,17 +31,25 @@ class ParentProfileResource(resources.ModelResource):
 
     class Meta:
         model = ParentProfile
-        fields = ('id', 'user', 'national_code', 'job_title')
-        export_order = ('id', 'user', 'national_code', 'job_title')
+        fields = ('id', 'user', 'relation_type')
+        export_order = fields
 
 
 class StudentProfileResource(resources.ModelResource):
     user = UserForeignKeyField()
+    school_location = fields.Field(
+        attribute='school_location__title', column_name='school_location')
+    home_location = fields.Field(
+        attribute='home_location__title', column_name='home_location')
 
     class Meta:
         model = StudentProfile
-        fields = ('id', 'user', 'grade', 'school_name')
-        export_order = ('id', 'user', 'grade', 'school_name')
+        fields = (
+            'id', 'user', 'grade', 'class_name',
+            'school_id_code', 'school_location', 'home_location',
+            'is_active', 'special_conditions'
+        )
+        export_order = fields
 
 
 class DriverProfileResource(resources.ModelResource):
@@ -50,26 +57,40 @@ class DriverProfileResource(resources.ModelResource):
 
     class Meta:
         model = DriverProfile
-        fields = ('id', 'user', 'license_number', 'vehicle_type')
-        export_order = ('id', 'user', 'license_number', 'vehicle_type')
+        fields = (
+            'id', 'user', 'plate_number', 'car_type',
+            'license_type', 'license_expiry_date', 'is_verified', 'rating'
+        )
+        export_order = fields
 
 
 class SchoolProfileResource(resources.ModelResource):
     user = UserForeignKeyField()
+    school_location = fields.Field(
+        attribute='school_location__title', column_name='school_location')
 
     class Meta:
         model = SchoolProfile
-        fields = ('id', 'user', 'school_name', 'address', 'city')
-        export_order = ('id', 'user', 'school_name', 'address', 'city')
+        fields = (
+            'id', 'user', 'school_name', 'school_phone',
+            'school_code', 'school_type', 'school_location',
+            'start_time', 'end_time'
+        )
+        export_order = fields
 
 
 class TransportAdminProfileResource(resources.ModelResource):
     user = UserForeignKeyField()
+    region_location = fields.Field(
+        attribute='region_location__title', column_name='region_location')
 
     class Meta:
         model = TransportAdminProfile
-        fields = ('id', 'user', 'region', 'employee_code')
-        export_order = ('id', 'user', 'region', 'employee_code')
+        fields = (
+            'id', 'user', 'region_name',
+            'region_location', 'total_active_drivers'
+        )
+        export_order = fields
 
 
 class EducationAdminProfileResource(resources.ModelResource):
@@ -77,8 +98,8 @@ class EducationAdminProfileResource(resources.ModelResource):
 
     class Meta:
         model = EducationAdminProfile
-        fields = ('id', 'user', 'region', 'employee_code')
-        export_order = ('id', 'user', 'region', 'employee_code')
+        fields = ('id', 'user', 'region_name', 'can_manage_permissions')
+        export_order = fields
 
 
 class SuperAdminProfileResource(resources.ModelResource):
@@ -86,5 +107,5 @@ class SuperAdminProfileResource(resources.ModelResource):
 
     class Meta:
         model = SuperAdminProfile
-        fields = ('id', 'user', 'title')
-        export_order = ('id', 'user', 'title')
+        fields = ('id', 'user', 'can_manage_all', 'can_view_logs')
+        export_order = fields

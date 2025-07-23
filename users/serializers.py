@@ -1,3 +1,4 @@
+from .models import Location
 from .models import StudentProfile
 from .models import DriverProfile
 from .models import SchoolProfile
@@ -420,6 +421,59 @@ class UserSerializer(serializers.ModelSerializer):
 
 # ------
 
+class LocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Location
+        fields = ['id', 'title', 'address', 'latitude', 'longitude']
+# ------
+# تاریخچه‌
+
+
+class OverviewReportSerializer(serializers.Serializer):
+    total_users = serializers.IntegerField()
+    total_referrals = serializers.IntegerField()
+    active_users_today = serializers.IntegerField()
+
+#  تعداد کاربران به تفکیک نقش
+
+
+class RoleCountSerializer(serializers.Serializer):
+    role = serializers.CharField()
+    count = serializers.IntegerField()
+
+#  آمار ارجاع‌ها
+
+
+class ReferralReportSerializer(serializers.Serializer):
+    inviter_name = serializers.CharField()
+    invited_count = serializers.IntegerField()
+
+# کاربران فعال در بازه اخیر
+
+
+class ActiveUserSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    phone_number = serializers.CharField()
+    last_login = serializers.DateTimeField()
+
+# کاربران جدید ثبت‌نام‌کرده در بازه زمانی خاص
+
+
+class NewUserSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    phone_number = serializers.CharField()
+    created_at = serializers.DateTimeField()
+
+#  مکان‌های ثبت‌شده
+
+
+class LocationStatsSerializer(serializers.Serializer):
+    location_name = serializers.CharField()
+    student_count = serializers.IntegerField()
+    driver_count = serializers.IntegerField()
+
+# ------
+
 
 # class UserInfoMixin(serializers.Serializer):
 #     phone_number = serializers.CharField(
@@ -430,6 +484,19 @@ class UserSerializer(serializers.ModelSerializer):
 #     email = serializers.EmailField(source='user.email', read_only=True)
 
 # ------
+# ------
+# ------
+
+# ------
+
+# ------
+
+
+# ------# ------
+
+# ------
+# ------
+
 # نکته کلیدی
 # API مجزا
 # کنترل کامل تغییر نقش و مدیریت وابستگی‌ها

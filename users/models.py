@@ -264,6 +264,7 @@ class ParentProfile(models.Model):
     """
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, verbose_name=_("کاربر والد"))
+
     relation_type = models.CharField(
         max_length=50,
         choices=[('father', _('پدر')), ('mother', _('مادر')),
@@ -271,11 +272,19 @@ class ParentProfile(models.Model):
         default='father',
         verbose_name=_("نوع رابطه با دانش‌آموز")
     )
+
     default_driver = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True,
         related_name="parent_default_driver",
-        limit_choices_to={'role': 'driver'},
+        limit_choices_to={'role': RoleTypes.DRIVER},
         verbose_name=_("راننده پیش‌فرض")
+    )
+
+    students = models.ManyToManyField(
+        'StudentProfile',
+        related_name='parents',
+        blank=True,
+        verbose_name=_("دانش‌آموزان مرتبط")
     )
 
     class Meta:
@@ -293,7 +302,7 @@ class StudentProfile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, verbose_name=_("کاربر دانش‌آموز"))
     school_location = models.ForeignKey(
-        Location, on_delete=models.SET_NULL, null=True, related_name="student_school", verbose_name=_("لوکیشن مدرسه"))
+        Location, on_delete=models.SET_NULL, null=True, related_name="student_school",    blank=True,  verbose_name=_("لوکیشن مدرسه"))
     home_location = models.ForeignKey(
         Location, on_delete=models.SET_NULL, null=True, related_name="student_home", verbose_name=_("لوکیشن منزل"))
     grade = models.CharField(max_length=20, verbose_name=_("پایه تحصیلی"))
@@ -328,7 +337,7 @@ class SchoolProfile(models.Model):
     school_phone = models.CharField(
         max_length=20, verbose_name=_("شماره تماس مدرسه"))
     school_location = models.ForeignKey(
-        Location, on_delete=models.SET_NULL, null=True, verbose_name=_("لوکیشن مدرسه"))
+        Location, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_("لوکیشن مدرسه"))
     school_code = models.CharField(
         max_length=20, blank=True, null=True, verbose_name=_("کد مدرسه"))
     start_time = models.TimeField(
@@ -359,7 +368,7 @@ class TransportAdminProfile(models.Model):
         User, on_delete=models.CASCADE, verbose_name=_("کاربر اداره حمل و نقل"))
     region_name = models.CharField(max_length=100, verbose_name=_("نام منطقه"))
     region_location = models.ForeignKey(
-        Location, on_delete=models.SET_NULL, null=True, verbose_name=_("لوکیشن منطقه"))
+        Location, on_delete=models.SET_NULL, null=True,  blank=True, verbose_name=_("لوکیشن منطقه"))
     schools = models.ManyToManyField(
         SchoolProfile, blank=True, verbose_name=_("مدارس زیرمجموعه"))
     total_active_drivers = models.PositiveIntegerField(

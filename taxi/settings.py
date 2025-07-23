@@ -21,10 +21,29 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY',
                        'django-insecure-default-key-please-change-me')
 
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'False'
+# -----------------------
+#  ALLOWED_HOSTS
+default_allowed_hosts = [
+    "tda24.liara.run",
+    "tda24.ir",
+    "www.tda24.ir",
+    "localhost",
+    "127.0.0.1",
+]
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS',
-                          'localhost,127.0.0.1').split(',')
-#
+env_allowed_hosts = os.getenv("DJANGO_ALLOWED_HOSTS", "")
+ALLOWED_HOSTS = list(set(default_allowed_hosts + env_allowed_hosts.split(","))
+                     ) if env_allowed_hosts else default_allowed_hosts
+# CORS_ALLOWED_ORIGINS
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "https://tda24.ir",
+    "https://www.tda24.ir",
+    "https://tda24.liara.run",
+]
+# -----------------------
 INCLUDE_OTP_IN_RESPONSE = True
 #
 # ========== INSTALLED APPS ==========
