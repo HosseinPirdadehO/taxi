@@ -38,8 +38,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),  # مثلاً مسیر اپ users
-
-
+    path('api/wallet/', include('wallet.urls')),
 
     # مسیرهای Swagger
     re_path(r'^swagger(?P<format>\.json|\.yaml)$',

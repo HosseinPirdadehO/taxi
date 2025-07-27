@@ -8869,3 +8869,170 @@ TypeError: 'Meta.fields' must not contain non-model field names: vehicle_type, l
 [WARNING] 2025-07-23 15:50:18,897 basehttp 99064 6131625984 "POST /api/users/locations/ HTTP/1.1" 400 198
 [INFO] 2025-07-23 15:50:31,791 autoreload 99064 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/users/urls.py changed, reloading.
 [INFO] 2025-07-23 15:50:32,180 autoreload 99585 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 11:08:21,536 autoreload 84638 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 11:17:07,112 autoreload 86421 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 11:18:33,351 autoreload 86714 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 11:26:36,223 autoreload 86714 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 11:26:36,539 autoreload 88284 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 11:26:38,832 autoreload 88284 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 11:26:39,069 autoreload 88300 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 11:32:52,288 autoreload 89536 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 11:33:38,918 autoreload 89536 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 12:27:43,424 autoreload 750 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 12:57:19,952 autoreload 750 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/taxi/urls.py changed, reloading.
+[INFO] 2025-07-26 12:57:20,275 autoreload 6747 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 12:58:28,861 autoreload 7002 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 12:59:50,828 autoreload 7276 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:00:36,270 autoreload 7276 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/urls.py changed, reloading.
+[INFO] 2025-07-26 13:00:36,622 autoreload 7466 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:00:39,833 autoreload 7466 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/urls.py changed, reloading.
+[INFO] 2025-07-26 13:00:40,061 autoreload 7492 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:01:13,428 autoreload 7618 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:01:51,488 autoreload 7781 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:02:43,206 autoreload 7980 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:04:14,891 autoreload 8308 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:05:39,979 autoreload 8618 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:06:17,203 autoreload 8788 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:06:40,801 autoreload 8897 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:07:29,325 autoreload 8897 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/urls.py changed, reloading.
+[INFO] 2025-07-26 13:07:29,668 autoreload 9064 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:07:41,156 autoreload 9064 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/urls.py changed, reloading.
+[INFO] 2025-07-26 13:07:41,447 autoreload 9113 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:08:06,773 autoreload 9237 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:09:40,556 autoreload 9237 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/views.py changed, reloading.
+[INFO] 2025-07-26 13:09:40,905 autoreload 9572 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:09:44,102 autoreload 9572 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/views.py changed, reloading.
+[INFO] 2025-07-26 13:09:44,345 autoreload 9589 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:10:43,091 autoreload 9589 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/views.py changed, reloading.
+[INFO] 2025-07-26 13:10:43,427 autoreload 9811 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:10:45,592 autoreload 9811 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/views.py changed, reloading.
+[INFO] 2025-07-26 13:10:45,819 autoreload 9823 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:10:50,028 autoreload 9823 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/views.py changed, reloading.
+[INFO] 2025-07-26 13:10:50,252 autoreload 9847 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:10:52,397 autoreload 9847 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/views.py changed, reloading.
+[INFO] 2025-07-26 13:10:52,627 autoreload 9860 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:11:30,882 autoreload 9860 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 13:11:31,212 autoreload 9985 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:12:02,222 autoreload 9985 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 13:12:02,533 autoreload 10093 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:16:01,485 autoreload 11170 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:16:09,873 autoreload 11170 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 13:16:10,126 autoreload 11202 8244539968 Watching for file changes with StatReloader
+[WARNING] 2025-07-26 13:16:28,479 log 11202 6197751808 Not Found: /
+[WARNING] 2025-07-26 13:16:28,480 basehttp 11202 6197751808 "GET / HTTP/1.1" 404 3182
+[WARNING] 2025-07-26 13:16:28,552 log 11202 6197751808 Not Found: /favicon.ico
+[WARNING] 2025-07-26 13:16:28,552 basehttp 11202 6197751808 "GET /favicon.ico HTTP/1.1" 404 3233
+[WARNING] 2025-07-26 13:16:34,054 log 11202 6197751808 Not Found: /api/wallet/
+[WARNING] 2025-07-26 13:16:34,054 basehttp 11202 6197751808 "GET /api/wallet/ HTTP/1.1" 404 7642
+[WARNING] 2025-07-26 13:16:38,338 log 11202 6197751808 Not Found: /
+[WARNING] 2025-07-26 13:16:38,339 basehttp 11202 6197751808 "GET / HTTP/1.1" 404 3182
+[INFO] 2025-07-26 13:16:49,825 basehttp 11202 6197751808 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-26 13:16:49,853 basehttp 11202 6197751808 "GET /static/drf-yasg/style.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:16:49,877 basehttp 11202 6231404544 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-standalone-preset.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:16:49,886 basehttp 11202 6214578176 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui-bundle.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:16:49,889 basehttp 11202 6197751808 "GET /static/drf-yasg/swagger-ui-dist/swagger-ui.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:16:49,889 basehttp 11202 6281883648 "GET /static/drf-yasg/swagger-ui-init.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:16:49,890 basehttp 11202 6265057280 "GET /static/drf-yasg/immutable.min.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:16:49,894 basehttp 11202 6248230912 "GET /static/drf-yasg/insQ.min.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:16:50,057 basehttp 11202 6248230912 "GET /swagger/?format=openapi HTTP/1.1" 200 57156
+[INFO] 2025-07-26 13:17:35,993 basehttp 11202 6197751808 "GET /swagger/ HTTP/1.1" 200 2211
+[INFO] 2025-07-26 13:17:36,194 basehttp 11202 6197751808 "GET /swagger/?format=openapi HTTP/1.1" 200 57156
+[WARNING] 2025-07-26 13:17:38,323 log 11202 6197751808 Not Found: /
+[WARNING] 2025-07-26 13:17:38,324 basehttp 11202 6197751808 "GET / HTTP/1.1" 404 3182
+[WARNING] 2025-07-26 13:17:50,005 log 11202 6197751808 Not Found: /api/wallet/
+[WARNING] 2025-07-26 13:17:50,006 basehttp 11202 6197751808 "GET /api/wallet/ HTTP/1.1" 404 7642
+[WARNING] 2025-07-26 13:17:54,597 log 11202 6197751808 Unauthorized: /api/wallet/withdraw/
+[WARNING] 2025-07-26 13:17:54,597 basehttp 11202 6197751808 "GET /api/wallet/withdraw/ HTTP/1.1" 401 8586
+[INFO] 2025-07-26 13:17:54,613 basehttp 11202 6214578176 "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:17:54,615 basehttp 11202 6231404544 "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:17:54,616 basehttp 11202 6197751808 "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:17:54,616 basehttp 11202 6265057280 "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:17:54,617 basehttp 11202 6248230912 "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:17:54,618 basehttp 11202 6281883648 "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:17:54,619 basehttp 11202 6214578176 "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:17:54,619 basehttp 11202 6231404544 "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:17:54,620 basehttp 11202 6265057280 "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:17:54,620 basehttp 11202 6248230912 "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:17:54,620 basehttp 11202 6197751808 "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:17:54,626 basehttp 11202 6197751808 "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:21:34,965 autoreload 12422 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:22:19,618 autoreload 12596 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:22:26,652 basehttp 12596 6135066624 "GET /admin/ HTTP/1.1" 200 20105
+[INFO] 2025-07-26 13:22:26,685 basehttp 12596 6151892992 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:26,685 basehttp 12596 6168719360 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+[WARNING] 2025-07-26 13:22:26,689 basehttp 12596 6135066624 "GET /static/css/admin_rtl.css HTTP/1.1" 404 1978
+[INFO] 2025-07-26 13:22:26,689 basehttp 12596 6168719360 "GET /static/admin/css/responsive_rtl.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:26,689 basehttp 12596 6185545728 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:26,690 basehttp 12596 6151892992 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:26,690 basehttp 12596 6202372096 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:26,691 basehttp 12596 6219198464 "GET /static/admin/css/rtl.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:26,692 basehttp 12596 6185545728 "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:26,693 basehttp 12596 6185545728 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:26,695 basehttp 12596 6219198464 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:26,696 basehttp 12596 6185545728 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:29,253 basehttp 12596 6135066624 "GET /admin/wallet/wallettransaction/ HTTP/1.1" 200 20238
+[INFO] 2025-07-26 13:22:29,268 basehttp 12596 6168719360 "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+[WARNING] 2025-07-26 13:22:29,268 basehttp 12596 6151892992 "GET /static/css/admin_rtl.css HTTP/1.1" 404 1978
+[INFO] 2025-07-26 13:22:29,268 basehttp 12596 6185545728 "GET /static/admin/js/core.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:29,270 basehttp 12596 6202372096 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:29,271 basehttp 12596 6219198464 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:29,271 basehttp 12596 6168719360 "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:29,272 basehttp 12596 6185545728 "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:29,273 basehttp 12596 6236024832 "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:29,274 basehttp 12596 6202372096 "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:29,275 basehttp 12596 6168719360 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:29,276 basehttp 12596 6236024832 "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:29,276 basehttp 12596 6135066624 "GET /admin/jsi18n/ HTTP/1.1" 200 12738
+[INFO] 2025-07-26 13:22:29,278 basehttp 12596 6135066624 "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:29,293 basehttp 12596 6236024832 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:29,293 basehttp 12596 6135066624 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:22:32,587 basehttp 12596 6135066624 "GET /admin/ HTTP/1.1" 200 20105
+[WARNING] 2025-07-26 13:22:32,605 basehttp 12596 6135066624 "GET /static/css/admin_rtl.css HTTP/1.1" 404 1978
+[INFO] 2025-07-26 13:22:35,794 basehttp 12596 6151892992 "GET /admin/wallet/wallettransferhistory/ HTTP/1.1" 200 18452
+[WARNING] 2025-07-26 13:22:35,806 basehttp 12596 6135066624 "GET /static/css/admin_rtl.css HTTP/1.1" 404 1978
+[INFO] 2025-07-26 13:22:35,808 basehttp 12596 6151892992 "GET /admin/jsi18n/ HTTP/1.1" 200 12738
+[INFO] 2025-07-26 13:24:15,323 autoreload 12596 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 13:24:15,697 autoreload 12985 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:24:18,942 autoreload 12985 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 13:24:19,214 autoreload 13007 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:24:29,662 autoreload 13007 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 13:24:29,985 autoreload 13049 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:24:36,352 autoreload 13049 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 13:24:36,674 autoreload 13081 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:24:50,248 autoreload 13081 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 13:24:50,553 autoreload 13136 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:24:52,810 autoreload 13136 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 13:24:53,027 autoreload 13153 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:24:55,244 autoreload 13153 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 13:24:55,492 autoreload 13162 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:25:35,941 autoreload 13162 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/models.py changed, reloading.
+[INFO] 2025-07-26 13:25:36,294 autoreload 13320 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:25:39,045 basehttp 13320 6127415296 "GET /admin/wallet/wallettransferhistory/ HTTP/1.1" 200 18536
+[WARNING] 2025-07-26 13:25:39,083 basehttp 13320 6144241664 "GET /static/css/admin_rtl.css HTTP/1.1" 404 1978
+[INFO] 2025-07-26 13:25:39,085 basehttp 13320 6127415296 "GET /admin/jsi18n/ HTTP/1.1" 200 12738
+[INFO] 2025-07-26 13:25:57,649 basehttp 13320 6127415296 "GET /admin/wallet/wallet/ HTTP/1.1" 200 19197
+[WARNING] 2025-07-26 13:25:57,662 basehttp 13320 6144241664 "GET /static/css/admin_rtl.css HTTP/1.1" 404 1978
+[INFO] 2025-07-26 13:25:57,663 basehttp 13320 6127415296 "GET /admin/jsi18n/ HTTP/1.1" 200 12738
+[INFO] 2025-07-26 13:26:00,902 basehttp 13320 6127415296 "GET /admin/wallet/wallet/add/ HTTP/1.1" 200 28803
+[WARNING] 2025-07-26 13:26:00,917 basehttp 13320 6127415296 "GET /static/css/admin_rtl.css HTTP/1.1" 404 1978
+[INFO] 2025-07-26 13:26:00,918 basehttp 13320 6161068032 "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:26:00,918 basehttp 13320 6177894400 "GET /static/admin/js/calendar.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:26:00,920 basehttp 13320 6194720768 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:26:00,920 basehttp 13320 6211547136 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:26:00,921 basehttp 13320 6194720768 "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:26:00,922 basehttp 13320 6144241664 "GET /admin/jsi18n/ HTTP/1.1" 200 12738
+[INFO] 2025-07-26 13:26:00,923 basehttp 13320 6194720768 "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:26:00,965 basehttp 13320 6144241664 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:26:00,965 basehttp 13320 6194720768 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 304 0
+[INFO] 2025-07-26 13:37:31,342 autoreload 15920 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:38:12,826 autoreload 15920 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/urls.py changed, reloading.
+[INFO] 2025-07-26 13:38:13,178 autoreload 16066 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:38:15,403 autoreload 16066 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/urls.py changed, reloading.
+[INFO] 2025-07-26 13:38:15,645 autoreload 16087 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:38:31,239 autoreload 16087 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/urls.py changed, reloading.
+[INFO] 2025-07-26 13:38:31,558 autoreload 16144 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:38:34,840 autoreload 16144 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/urls.py changed, reloading.
+[INFO] 2025-07-26 13:38:35,074 autoreload 16165 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-26 13:38:41,391 autoreload 16165 8244539968 /Users/mr.pirdadeh/Desktop/!/taxirani/wallet/urls.py changed, reloading.
+[INFO] 2025-07-26 13:38:41,623 autoreload 16191 8244539968 Watching for file changes with StatReloader
+[INFO] 2025-07-27 12:11:55,180 autoreload 5466 8206381632 Watching for file changes with StatReloader

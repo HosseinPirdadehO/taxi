@@ -135,7 +135,8 @@ USE_TZ = True
 # ========== STATIC FILES ==========
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
+# ==========REFERRAL_REWARD_AMOUNT ==========
+REFERRAL_REWARD_AMOUNT = 50000
 # ========== MEDIA FILES ==========
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
