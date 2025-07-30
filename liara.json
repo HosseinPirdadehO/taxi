@@ -1,0 +1,6 @@
+{
+  "app": "taxi",
+  "type": "python",
+  "static": "staticfiles",
+  "run": "gunicorn taxi.wsgi --bind 0.0.0.0:$PORT"
+}

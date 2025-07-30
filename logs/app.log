@@ -10693,3 +10693,102 @@ TypeError: 'Meta.fields' must not contain non-model field names: vehicle_type, l
 [ERROR] 2025-07-30 14:28:52,305 basehttp 87039 6214578176 You're accessing the development server over HTTPS, but it only supports HTTP.
 [WARNING] 2025-07-30 14:29:51,955 log 87142 8206381632 Not Found: /
 [WARNING] 2025-07-30 14:29:51,994 log 87142 8206381632 Not Found: /favicon.ico
+[WARNING] 2025-07-30 15:15:26,910 base 98130 8206381632 Session data corrupted
+[WARNING] 2025-07-30 15:15:26,930 base 98130 8206381632 Session data corrupted
+[WARNING] 2025-07-30 15:15:26,965 log 98130 8206381632 Not Found: /static/css/admin_rtl.css
+[WARNING] 2025-07-30 15:15:26,977 log 98130 8206381632 Not Found: /static/css/admin_rtl.css
+[WARNING] 2025-07-30 15:15:27,048 log 98130 8206381632 Not Found: /favicon.ico
+[WARNING] 2025-07-30 15:15:30,359 log 98130 8206381632 Not Found: /a
+[ERROR] 2025-07-30 15:24:43,397 log 625 8206381632 Invalid HTTP_HOST header: '0.0.0.0:8000'. You may need to add '0.0.0.0' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '0.0.0.0:8000'. You may need to add '0.0.0.0' to ALLOWED_HOSTS.
+[ERROR] 2025-07-30 15:24:43,543 log 625 8206381632 Invalid HTTP_HOST header: '0.0.0.0:8000'. You may need to add '0.0.0.0' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/Users/mr.pirdadeh/Desktop/!/taxirani/env/lib/python3.13/site-packages/django/http/request.py", line 202, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '0.0.0.0:8000'. You may need to add '0.0.0.0' to ALLOWED_HOSTS.
+[WARNING] 2025-07-30 15:39:00,280 log 5709 6182809600 Not Found: /favicon.ico
+[WARNING] 2025-07-30 15:40:41,524 base 5767 8206381632 Session data corrupted
+[WARNING] 2025-07-30 15:40:41,561 base 5767 8206381632 Session data corrupted
+[WARNING] 2025-07-30 15:40:41,616 log 5767 8206381632 Not Found: /static/css/admin_rtl.css
+[WARNING] 2025-07-30 15:40:41,632 log 5767 8206381632 Not Found: /static/css/admin_rtl.css
+[WARNING] 2025-07-30 15:40:52,619 log 5767 8206381632 Not Found: /api/users/',
+[WARNING] 2025-07-30 15:44:14,851 log 6590 8206381632 Not Found: /static/css/admin_rtl.css
+[WARNING] 2025-07-30 15:46:36,624 log 7381 8206381632 Not Found: /static/css/admin_rtl.css
+[WARNING] 2025-07-30 15:46:37,446 log 7381 8206381632 Not Found: /static/css/admin_rtl.css
+[WARNING] 2025-07-30 15:46:38,085 log 7381 8206381632 Not Found: /static/css/admin_rtl.css
+[WARNING] 2025-07-30 15:46:38,491 log 7381 8206381632 Not Found: /static/css/admin_rtl.css
+[WARNING] 2025-07-30 15:46:38,655 log 7381 8206381632 Not Found: /static/css/admin_rtl.css
+[WARNING] 2025-07-30 15:46:38,808 log 7381 8206381632 Not Found: /static/css/admin_rtl.css
+[WARNING] 2025-07-30 15:46:38,971 log 7381 8206381632 Not Found: /static/css/admin_rtl.css
+[WARNING] 2025-07-30 15:46:39,128 log 7381 8206381632 Not Found: /static/css/admin_rtl.css
+[WARNING] 2025-07-30 15:46:39,258 log 7381 8206381632 Not Found: /static/css/admin_rtl.css
+[INFO] 2025-07-30 15:53:35,536 autoreload 9037 8206381632 Watching for file changes with StatReloader
+[INFO] 2025-07-30 15:53:36,900 basehttp 9037 6200389632 code 400, message Bad request version ('áZJÉ^"\x8c?l÷:\x92}X¬è\x0eÜ^Ý;\x91tÖ©')
+[ERROR] 2025-07-30 15:53:36,900 basehttp 9037 6200389632 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:36,900 basehttp 9037 6217216000 code 400, message Bad request version ('¦AY\x91\x173\x1a§\x963\x94§uGb\x8e¦A\x89ÄKfqj\x00DH·\x05Írâ\x06òØ¾F×y\x16Q\x90K£³Ñ')
+[ERROR] 2025-07-30 15:53:36,900 basehttp 9037 6217216000 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:36,901 basehttp 9037 6200389632 code 400, message Bad request version ('zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06súú\x00\x00\x00')
+[ERROR] 2025-07-30 15:53:36,901 basehttp 9037 6200389632 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:36,901 basehttp 9037 6217216000 code 400, message Bad request version ('G;28Nî}')
+[ERROR] 2025-07-30 15:53:36,901 basehttp 9037 6217216000 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:37,574 basehttp 9037 6200389632 code 400, message Bad request version ('jj\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93JJ\x00\x00\x00')
+[INFO] 2025-07-30 15:53:37,574 basehttp 9037 6217216000 code 400, message Bad request version ('¥')
+[ERROR] 2025-07-30 15:53:37,574 basehttp 9037 6200389632 You're accessing the development server over HTTPS, but it only supports HTTP.
+[ERROR] 2025-07-30 15:53:37,574 basehttp 9037 6217216000 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:37,575 basehttp 9037 6200389632 code 400, message Bad request version ('¶ÊVðed\x9e')
+[ERROR] 2025-07-30 15:53:37,575 basehttp 9037 6200389632 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:37,575 basehttp 9037 6217216000 code 400, message Bad request version ('\x02h2\x08http/1.1ÿ\x01\x00\x01\x00DÍ\x00\x05\x00\x03\x02h2\x00-\x00\x02\x01\x01\x00')
+[ERROR] 2025-07-30 15:53:37,575 basehttp 9037 6217216000 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:38,114 basehttp 9037 6200389632 code 400, message Bad request version ('\x00\x02\x01\x00\x00\x17\x00\x00\x00+\x00\x07\x06::\x03\x04\x03\x03\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00#\x00\x00\x00\x12\x00\x00\x00')
+[ERROR] 2025-07-30 15:53:38,114 basehttp 9037 6200389632 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:38,114 basehttp 9037 6217216000 code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x06')
+[ERROR] 2025-07-30 15:53:38,115 basehttp 9037 6217216000 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:38,115 basehttp 9037 6200389632 code 400, message Bad request version ('\x8a\x8a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93')
+[ERROR] 2025-07-30 15:53:38,115 basehttp 9037 6200389632 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:38,116 basehttp 9037 6217216000 code 400, message Bad request version ('h')
+[ERROR] 2025-07-30 15:53:38,116 basehttp 9037 6217216000 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:40,343 basehttp 9037 6200389632 code 400, message Bad request version ('ºN³Á\x00')
+[INFO] 2025-07-30 15:53:40,343 basehttp 9037 6217216000 code 400, message Bad request version ('úú\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93jj\x00\x00\x00#\x00\x00\x00')
+[ERROR] 2025-07-30 15:53:40,343 basehttp 9037 6200389632 You're accessing the development server over HTTPS, but it only supports HTTP.
+[ERROR] 2025-07-30 15:53:40,343 basehttp 9037 6217216000 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:40,344 basehttp 9037 6200389632 code 400, message Bad request version ('#b\x8acR<vô\x88\x9eÓ(N\x15Ûpvkh±:HÁ\x1a¥\x87\x13')
+[ERROR] 2025-07-30 15:53:40,344 basehttp 9037 6200389632 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:40,344 basehttp 9037 6217216000 code 400, message Bad request version ('»]n,Bßó\x81\x00')
+[ERROR] 2025-07-30 15:53:40,345 basehttp 9037 6217216000 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:42,537 basehttp 9037 6200389632 code 400, message Bad request version ('\x00\x13>Îû¥Ä\x860>pmEÛ(»¹\x00É\x04\x13±P')
+[ERROR] 2025-07-30 15:53:42,537 basehttp 9037 6200389632 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:42,538 basehttp 9037 6200389632 code 400, message Bad request version ('\x9a\x9a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063**\x00\x00\x00#\x00\x00ÿ\x01\x00\x01\x00\x00')
+[ERROR] 2025-07-30 15:53:42,538 basehttp 9037 6200389632 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:42,660 basehttp 9037 6200389632 code 400, message Bad request version ('ùB\x02ü\\1\x84£ÊGõ\x90øzxZéª\x9b¼\x7f]\x91¬\x16&\x19')
+[ERROR] 2025-07-30 15:53:42,660 basehttp 9037 6200389632 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:42,660 basehttp 9037 6217216000 code 400, message Bad request version ('¼3±ò')
+[ERROR] 2025-07-30 15:53:42,661 basehttp 9037 6217216000 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:42,661 basehttp 9037 6200389632 code 400, message Bad request version ('Ê"]=\x14m\xadöY×\x92:÷I¾ÙA\x05')
+[ERROR] 2025-07-30 15:53:42,661 basehttp 9037 6200389632 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-07-30 15:53:42,661 basehttp 9037 6234042368 code 400, message Bad request version ('c§¥\x9bë\x0f\x06Æ\x8dÛèQ"*ÍW\x19?õÛ3t\x99w+d´Ê\x96t\x94pºNG\x16P\x98¶×¨(\x84é(`2\\Ü\x17')
+[ERROR] 2025-07-30 15:53:42,661 basehttp 9037 6234042368 You're accessing the development server over HTTPS, but it only supports HTTP.
+[WARNING] 2025-07-30 16:02:00,695 log 10934 6163066880 Not Found: /
+[WARNING] 2025-07-30 16:02:07,838 log 10934 6163066880 Not Found: /
+[WARNING] 2025-07-30 16:02:14,842 log 10934 6163066880 Not Found: /
+[WARNING] 2025-07-30 16:02:17,880 log 10934 6163066880 Not Found: /
+[WARNING] 2025-07-30 16:07:01,977 base 11396 6127120384 Session data corrupted
+[WARNING] 2025-07-30 16:07:02,021 base 11396 6143946752 Session data corrupted
+[WARNING] 2025-07-30 16:07:08,876 base 11396 6127120384 Session data corrupted
+[WARNING] 2025-07-30 16:07:16,239 base 11396 6143946752 Session data corrupted
+[WARNING] 2025-07-30 16:17:04,996 log 12820 8206381632 Not Found: /
+[WARNING] 2025-07-30 16:21:32,547 log 14934 6129184768 Not Found: /

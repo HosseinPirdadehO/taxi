@@ -206,3 +206,6 @@ if settings.DEBUG:
 # 	•	reports/locations/
 # 	•	locations/ — مدیریت کامل مکان‌ها (CRUD) برای ادمین
 # 	•	locations/<int:pk>/ — مدیریت مکان خاص
+
+
+# gunicorn taxi.wsgi

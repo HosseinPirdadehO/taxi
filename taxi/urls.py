@@ -15,6 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.http import HttpResponse
 from django.urls import path, include, re_path
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -35,7 +36,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-
+    # path("", lambda request: HttpResponse("✅ Hello from Django!")),
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),  # مثلاً مسیر اپ users
     path('api/wallet/', include('wallet.urls')),

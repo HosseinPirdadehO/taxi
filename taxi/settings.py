@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'csp.middleware.CSPMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -227,8 +228,11 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 
 # ========== LOGGING ==========
-LOG_DIR = BASE_DIR / 'logs'
-LOG_DIR.mkdir(exist_ok=True)
+IS_PRODUCTION = os.getenv('ENV') == 'production'
+
+if not IS_PRODUCTION:
+    LOGGING_DIR = BASE_DIR / 'logs'
+    LOGGING_DIR.mkdir(exist_ok=True)
 
 LOGGING = {
     'version': 1,
@@ -248,18 +252,24 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'simple',
         },
-        'file': {
-            'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': BASE_DIR / 'logs/app.log',
-            'formatter': 'verbose',
-        },
     },
     'loggers': {
         'django': {
-            'handlers': ['console', 'file'],
+            'handlers': ['console'],
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
             'propagate': True,
         },
     },
 }
+
+if not IS_PRODUCTION:
+    LOGGING['handlers']['file'] = {
+        'level': 'INFO',
+        'class': 'logging.FileHandler',
+        'filename': LOGGING_DIR / 'app.log',
+        'formatter': 'verbose',
+    }
+    LOGGING['loggers']['django']['handlers'].append('file')
+
+# ========== LOGGING ==========
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
