@@ -228,11 +228,24 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 
 # ========== LOGGING ==========
+
 IS_PRODUCTION = os.getenv('ENV') == 'production'
 
 if not IS_PRODUCTION:
     LOGGING_DIR = BASE_DIR / 'logs'
-    LOGGING_DIR.mkdir(exist_ok=True)
+    try:
+        LOGGING_DIR.mkdir(exist_ok=True)
+        file_handler = {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': LOGGING_DIR / 'app.log',
+            'formatter': 'verbose',
+        }
+        use_file_handler = True
+    except Exception:
+        use_file_handler = False
+else:
+    use_file_handler = False
 
 LOGGING = {
     'version': 1,
@@ -262,14 +275,8 @@ LOGGING = {
     },
 }
 
-if not IS_PRODUCTION:
-    LOGGING['handlers']['file'] = {
-        'level': 'INFO',
-        'class': 'logging.FileHandler',
-        'filename': LOGGING_DIR / 'app.log',
-        'formatter': 'verbose',
-    }
+if use_file_handler:
+    LOGGING['handlers']['file'] = file_handler
     LOGGING['loggers']['django']['handlers'].append('file')
-
 # ========== LOGGING ==========
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
