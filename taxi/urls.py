@@ -52,3 +52,26 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)
+
+
+#  هیچ پنل مدیریت (/admin) یا Swagger برای کاربران عادی در production قابل دسترسی نباشه
+# یادت نره اینو پیاده سازی کنی
+# قدم بعدی هم اضافه کردن دیتابیس
+
+
+# python manage.py runserver_plus --cert-file cert.pem
+
+# /Users/mr.pirdadeh/Desktop/!/taxirani/env/bin/gunicorn' --workers 3 --bind unix:/tmp/taxirani.sock taxi.wsgi:application
+
+# '/Users/mr.pirdadeh/Desktop/!/taxirani/env/bin/gunicorn' --workers 3 --bind unix:/tmp/taxirani.sock taxi.wsgi:application
+
+# ./env/bin/gunicorn --workers 3 --bind unix:/tmp/taxirani.sock taxi.wsgi:application
+
+# brew services list
+
+
+# Name          Status   User        File
+# nginx         started  mr.pirdadeh ~/Library/LaunchAgents/homebrew.mxcl.nginx.plist
+# postgresql@14 error  1 mr.pirdadeh ~/Library/LaunchAgents/homebrew.mxcl.postgresql@14.plist
+# rabbitmq      started  mr.pirdadeh ~/Library/LaunchAgents/homebrew.mxcl.rabbitmq.plist
+# redis         started  mr.pirdadeh ~/Library/LaunchAgents/homebrew.mxcl.redis.plist

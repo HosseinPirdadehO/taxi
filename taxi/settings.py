@@ -9,46 +9,25 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 import os
 from datetime import timedelta
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 # ========== SECURITY ==========
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY',
-                       'django-insecure-default-key-please-change-me')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+# ========== CORS ==========
+ALLOWED_HOSTS = [host.strip() for host in os.getenv(
+    "DJANGO_ALLOWED_HOSTS", "").split(",") if host.strip()]
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [origin.strip() for origin in os.getenv(
+    "CORS_ALLOWED_ORIGINS", "").split(",") if origin.strip()]
 
-DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'False'
-# -----------------------
-#  ALLOWED_HOSTS
-default_allowed_hosts = [
-    "tda24.liara.run",
-    "tda24.ir",
-    "www.tda24.ir",
-    "localhost",
-    "127.0.0.1",
-]
-
-env_allowed_hosts = os.getenv("DJANGO_ALLOWED_HOSTS", "")
-ALLOWED_HOSTS = list(set(default_allowed_hosts + env_allowed_hosts.split(","))
-                     ) if env_allowed_hosts else default_allowed_hosts
-# CORS_ALLOWED_ORIGINS
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-    "https://tda24.ir",
-    "https://www.tda24.ir",
-    "https://tda24.liara.run",
-]
-# -----------------------
-INCLUDE_OTP_IN_RESPONSE = True
-#
 # ========== INSTALLED APPS ==========
 INSTALLED_APPS = [
-    # Default Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,16 +35,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Third party apps
-    'rest_framework_simplejwt.token_blacklist',
+    # Third-party
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
     'guardian',
     'drf_yasg',
     'import_export',
-
-
-    # Your apps
+    'csp',
+    'django_extensions',
+    # Local
     'users',
     'wallet',
 ]
@@ -74,6 +53,7 @@ AUTH_USER_MODEL = 'users.User'
 
 # ========== MIDDLEWARE ==========
 MIDDLEWARE = [
+    'csp.middleware.CSPMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -83,10 +63,18 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+# ========== CONTENT_SECURITY_POLICY ==========
+CONTENT_SECURITY_POLICY = {
+    'DIRECTIVES': {
+        'default-src': ["'self'"],
+        'script-src': ["'self'", 'https://cdn.jsdelivr.net'],
+        'style-src': ["'self'", 'fonts.googleapis.com'],
+        'connect-src': ["'self'", 'https://cdn.jsdelivr.net'],
+    }
+}
+# ========== URL & TEMPLATES ==========
 ROOT_URLCONF = 'taxi.urls'
 
-# ========== TEMPLATES ==========
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -119,27 +107,27 @@ DATABASES = {
 
 # ========== PASSWORD VALIDATORS ==========
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', },
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', },
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', },
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 # ========== INTERNATIONALIZATION ==========
-# LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'fa'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# ========== STATIC FILES ==========
+# ========== STATIC & MEDIA ==========
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-# ==========REFERRAL_REWARD_AMOUNT ==========
-REFERRAL_REWARD_AMOUNT = 50000
-# ========== MEDIA FILES ==========
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# ========== REFERRAL ==========
+REFERRAL_REWARD_AMOUNT = 50000
 
 # ========== REST FRAMEWORK ==========
 REST_FRAMEWORK = {
@@ -165,18 +153,19 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'user': '1000/day',
         'anon': '100/day',
+        'otp': '5/hour',
     },
-    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
-    'UNAUTHENTICATED_USER': None,
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
         'rest_framework.filters.SearchFilter',
-    ]
+    ],
+    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
+    'UNAUTHENTICATED_USER': None,
 }
 
 # ========== SIMPLE JWT ==========
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(days=3),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
@@ -185,23 +174,52 @@ SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
-# ========== DJANGO-GUARDIAN ==========
+# ========== GUARDIAN ==========
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'guardian.backends.ObjectPermissionBackend',
 )
 ANONYMOUS_USER_NAME = 'anonymous'
 
-# ========== CORS ==========
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = os.getenv(
-    'CORS_ALLOWED_ORIGINS', 'http://localhost:3000').split(',')
+# ========== SECURITY HEADERS ==========
 
-# ========== SECURITY ==========
+DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
+
+# تنظیمات امنیتی فقط وقتی DEBUG=False فعال میشن
+if DEBUG:
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+    SECURE_HSTS_SECONDS = 0
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+    SECURE_HSTS_PRELOAD = False
+else:
+    SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT', 'False') == 'True'
+    SESSION_COOKIE_SECURE = os.getenv(
+        'SESSION_COOKIE_SECURE', 'False') == 'True'
+    CSRF_COOKIE_SECURE = os.getenv('CSRF_COOKIE_SECURE', 'False') == 'True'
+    SECURE_HSTS_SECONDS = int(os.getenv('SECURE_HSTS_SECONDS', '0'))
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = os.getenv(
+        'SECURE_HSTS_INCLUDE_SUBDOMAINS', 'False') == 'True'
+    SECURE_HSTS_PRELOAD = os.getenv('SECURE_HSTS_PRELOAD', 'False') == 'True'
+
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
 
+# بقیه تنظیمات
+
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+
+ALLOWED_HOSTS = [host.strip() for host in os.getenv(
+    'DJANGO_ALLOWED_HOSTS', '').split(',') if host.strip()]
+
+CORS_ALLOWED_ORIGINS = [origin.strip() for origin in os.getenv(
+    'CORS_ALLOWED_ORIGINS', '').split(',') if origin.strip()]
+
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0')
+
+LOG_LEVEL = os.getenv('DJANGO_LOG_LEVEL', 'INFO')
 # ========== CELERY ==========
 CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0')
 CELERY_ACCEPT_CONTENT = ['json']
@@ -209,7 +227,6 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 
 # ========== LOGGING ==========
-
 LOG_DIR = BASE_DIR / 'logs'
 LOG_DIR.mkdir(exist_ok=True)
 
