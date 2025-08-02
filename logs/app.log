@@ -10792,3 +10792,25 @@ django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '0.0.0.0:8000'.
 [WARNING] 2025-07-30 16:07:16,239 base 11396 6143946752 Session data corrupted
 [WARNING] 2025-07-30 16:17:04,996 log 12820 8206381632 Not Found: /
 [WARNING] 2025-07-30 16:21:32,547 log 14934 6129184768 Not Found: /
+[INFO] 2025-08-02 06:31:44,212 autoreload 33962 8327803456 Watching for file changes with StatReloader
+[INFO] 2025-08-02 06:31:49,374 basehttp 33962 6133788672 code 400, message Bad request version ('ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06S')
+[INFO] 2025-08-02 06:31:49,374 basehttp 33962 6150615040 code 400, message Bad request version ('\x17\x11Zöj\x04ã©«\x905')
+[ERROR] 2025-08-02 06:31:49,374 basehttp 33962 6133788672 You're accessing the development server over HTTPS, but it only supports HTTP.
+[ERROR] 2025-08-02 06:31:49,374 basehttp 33962 6150615040 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-08-02 06:31:49,375 basehttp 33962 6133788672 code 400, message Bad request syntax ('\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03">\x88è\x18\x8e]ñBß8\\ãü<ÂòÑ\x9ck\x80;¶y,Ò\x7f\x8c')
+[ERROR] 2025-08-02 06:31:49,376 basehttp 33962 6133788672 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-08-02 06:31:49,376 basehttp 33962 6150615040 code 400, message Bad request version ('\x8bÂ\x91&\x08')
+[ERROR] 2025-08-02 06:31:49,376 basehttp 33962 6150615040 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-08-02 06:31:50,544 basehttp 33962 6133788672 code 400, message Bad request version ('\xad\x92H\x8e\x10+:¸T×ô±c')
+[ERROR] 2025-08-02 06:31:50,544 basehttp 33962 6133788672 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-08-02 06:31:50,545 basehttp 33962 6133788672 code 400, message Bad request syntax ('\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03î¢N')
+[ERROR] 2025-08-02 06:31:50,545 basehttp 33962 6133788672 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-08-02 06:31:50,548 basehttp 33962 6133788672 code 400, message Bad request version ('Û\x95Fm\x89MHrÈÿùb%r\x80J')
+[ERROR] 2025-08-02 06:31:50,548 basehttp 33962 6133788672 You're accessing the development server over HTTPS, but it only supports HTTP.
+[INFO] 2025-08-02 06:31:50,549 basehttp 33962 6133788672 code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00')
+[ERROR] 2025-08-02 06:31:50,549 basehttp 33962 6133788672 You're accessing the development server over HTTPS, but it only supports HTTP.
+[WARNING] 2025-08-02 06:32:08,247 log 34024 6170226688 Not Found: /
+[WARNING] 2025-08-02 06:32:08,357 log 34024 6170226688 Not Found: /favicon.ico
+[WARNING] 2025-08-02 06:32:19,791 log 34024 6170226688 Not Found: /python manage.py runserver
+[WARNING] 2025-08-02 06:32:28,547 log 34024 6170226688 Not Found: /accounts/login/
+[WARNING] 2025-08-02 06:32:32,432 log 34024 6170226688 Not Found: /accounts/login/
