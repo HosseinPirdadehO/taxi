@@ -116,14 +116,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # ========== INTERNATIONALIZATION ==========
 LANGUAGE_CODE = 'fa'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tehran'
 USE_I18N = True
 USE_TZ = True
 
 # ========== STATIC & MEDIA ==========
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
+FILE_UPLOAD_PERMISSIONS = 0o644
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -208,17 +208,6 @@ SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
 
-# بقیه تنظیمات
-
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-
-ALLOWED_HOSTS = [host.strip() for host in os.getenv(
-    'DJANGO_ALLOWED_HOSTS', '').split(',') if host.strip()]
-
-CORS_ALLOWED_ORIGINS = [origin.strip() for origin in os.getenv(
-    'CORS_ALLOWED_ORIGINS', '').split(',') if origin.strip()]
-
-CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://localhost:6379/0')
 
 LOG_LEVEL = os.getenv('DJANGO_LOG_LEVEL', 'INFO')
 # ========== CELERY ==========
@@ -228,35 +217,10 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 
 # ========== LOGGING ==========
-
-IS_PRODUCTION = os.getenv('ENV') == 'production'
-
-# انتخاب مسیر لاگ فقط در حالت توسعه
-if not IS_PRODUCTION:
-    LOGGING_DIR = BASE_DIR / 'logs'
-    try:
-        LOGGING_DIR.mkdir(parents=True, exist_ok=True)
-        file_handler = {
-            'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': LOGGING_DIR / 'app.log',
-            'formatter': 'verbose',
-        }
-        use_file_handler = True
-    except Exception:
-        use_file_handler = False
-else:
-    use_file_handler = False
-
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
-        'verbose': {
-            'format': '[{levelname}] {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
         'simple': {
             'format': '[{levelname}] {message}',
             'style': '{',
@@ -267,17 +231,15 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'simple',
         },
-        # file handler فقط اگر فعال شده باشد اضافه می‌شود
-        **({'file': file_handler} if use_file_handler else {})
     },
     'loggers': {
         'django': {
-            'handlers': ['console'] + (['file'] if use_file_handler else []),
+            'handlers': ['console'],
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
             'propagate': True,
         },
     },
 }
 
-# ========== LOGGING ==========
+# ========== STATICFILES_STORAGE ==========
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
