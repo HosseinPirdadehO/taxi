@@ -1,2 +1,1 @@
-web: gunicorn taxi.wsgi --workers=1 --threads=1 --timeout=60
-
+web: gunicorn taxi.wsgi --workers 2 --threads 2 --timeout 60 --bind 0.0.0.0:8000
