@@ -185,7 +185,22 @@ ANONYMOUS_USER_NAME = 'anonymous'
 # ========== SECURITY HEADERS ==========
 
 DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
+ALLOWED_HOSTS = [
+    "tda24.liara.run",
+    "tda24.ir",
+    "www.tda24.ir",
+    "localhost",
+    "127.0.0.1",
+]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "https://tda24.ir",
+    "https://www.tda24.ir",
+    "https://tda24.liara.run",
+]
 # تنظیمات امنیتی فقط وقتی DEBUG=False فعال میشن
 if DEBUG:
     SECURE_SSL_REDIRECT = False
