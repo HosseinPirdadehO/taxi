@@ -21,11 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ========== SECURITY ==========
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # ========== CORS ==========
-ALLOWED_HOSTS = [host.strip() for host in os.getenv(
-    "DJANGO_ALLOWED_HOSTS", "").split(",") if host.strip()]
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = [origin.strip() for origin in os.getenv(
-    "CORS_ALLOWED_ORIGINS", "").split(",") if origin.strip()]
+# ALLOWED_HOSTS = [host.strip() for host in os.getenv(
+#     "DJANGO_ALLOWED_HOSTS", "").split(",") if host.strip()]
+# CORS_ALLOW_ALL_ORIGINS = False
+# CORS_ALLOWED_ORIGINS = [origin.strip() for origin in os.getenv(
+#     "CORS_ALLOWED_ORIGINS", "").split(",") if origin.strip()]
 
 # ========== INSTALLED APPS ==========
 INSTALLED_APPS = [
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'import_export',
     'csp',
     'django_extensions',
+    'debug_toolbar',
     # Local
     'users',
     'wallet',
@@ -64,6 +65,25 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+# ========== django-debug-toolbar  ==========
+INTERNAL_IPS = [
+    "127.0.0.1",
+    "localhost",
+]
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
 ]
 # ========== CONTENT_SECURITY_POLICY ==========
 CONTENT_SECURITY_POLICY = {
@@ -96,14 +116,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'taxi.wsgi.application'
 
 # ========== DATABASE ==========
+# pro
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.getenv('DJANGO_DB_ENGINE'),
+#         'NAME': os.getenv('DJANGO_DB_NAME'),
+#         'USER': os.getenv('DJANGO_DB_USER'),
+#         'PASSWORD': os.getenv('DJANGO_DB_PASSWORD'),
+#         'HOST': os.getenv('DJANGO_DB_HOST'),
+#         'PORT': os.getenv('DJANGO_DB_PORT'),
+#     }
+# }
+# لوکال
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DJANGO_DB_ENGINE'),
-        'NAME': os.getenv('DJANGO_DB_NAME'),
-        'USER': os.getenv('DJANGO_DB_USER'),
-        'PASSWORD': os.getenv('DJANGO_DB_PASSWORD'),
-        'HOST': os.getenv('DJANGO_DB_HOST'),
-        'PORT': os.getenv('DJANGO_DB_PORT'),
+        'ENGINE': os.getenv('DJANGO_DB_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': BASE_DIR / os.getenv('DJANGO_DB_NAME', 'db.sqlite3'),
     }
 }
 # ========== PASSWORD VALIDATORS ==========
@@ -191,8 +219,10 @@ ALLOWED_HOSTS = [
     "www.tda24.ir",
     "localhost",
     "127.0.0.1",
-]
+    '0.0.0.0',
+    'tda24.liara.run',
 
+]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:8000",

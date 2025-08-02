@@ -22,6 +22,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.conf import settings
 from django.conf.urls.static import static
+import debug_toolbar
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -36,19 +37,20 @@ schema_view = get_schema_view(
 )
 
 
-def root_view(request):
-    return JsonResponse({
-        "message": "✅ API is up and running.",
-        "status": "ok"
-    })
+# def root_view(request):
+#     return JsonResponse({
+#         "message": "✅ API is up and running.",
+#         "status": "ok"
+#     })
 
 
 urlpatterns = [
-    path("", root_view),
-    # path("", lambda request: HttpResponse("✅ Hello from Django!")),
+    # path("", root_view),
+    path("", lambda request: HttpResponse("✅ Hello from Django!")),
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),  # مثلاً مسیر اپ users
     path('api/wallet/', include('wallet.urls')),
+    path('__debug__/', include(debug_toolbar.urls)),
 
     # مسیرهای Swagger
     re_path(r'^swagger(?P<format>\.json|\.yaml)$',

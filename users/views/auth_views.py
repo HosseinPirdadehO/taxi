@@ -87,20 +87,23 @@ class SendOTPView(StandardResponseMixin, generics.GenericAPIView):
         phone = serializer.validated_data['phone_number']
         raw_code = str(random.randint(1000, 9999))
 
-        otp_obj, created = PhoneOTP.objects.get_or_create(
-            phone_number=phone,
-            defaults={'purpose': 'registration'}
-        )
-        otp_obj.set_code(raw_code)  # متد مدل برای تنظیم کد و ریست وضعیت
+        # 🧹 پاک کردن OTPهای قبلی این شماره
+        PhoneOTP.objects.filter(phone_number=phone).delete()
 
-        # TODO: ارسال واقعی SMS با raw_code
+        # 📥 ساخت OTP جدید
+        otp_obj = PhoneOTP.objects.create(
+            phone_number=phone,
+            purpose='registration'
+        )
+        otp_obj.set_code(raw_code)
+
+        # TODO: ارسال SMS واقعی
         print(f"OTP for {phone} is {raw_code}")
 
         return self.standard_response(
             success=True,
             message="کد تأیید ارسال شد.",
-            # فقط برای تست در فرانت‌اند ارسال می‌شود
-            data={"otp_code": raw_code}
+            data={"otp_code": raw_code}  # فقط برای محیط توسعه
         )
 
 
