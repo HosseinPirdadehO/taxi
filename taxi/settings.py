@@ -184,7 +184,7 @@ ANONYMOUS_USER_NAME = 'anonymous'
 
 # ========== SECURITY HEADERS ==========
 
-DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
+DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
 # تنظیمات امنیتی فقط وقتی DEBUG=False فعال میشن
 if DEBUG:
