@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+import tempfile
 import os
 from datetime import timedelta
 from pathlib import Path
@@ -230,10 +231,11 @@ CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 
 IS_PRODUCTION = os.getenv('ENV') == 'production'
 
+# انتخاب مسیر لاگ فقط در حالت توسعه
 if not IS_PRODUCTION:
     LOGGING_DIR = BASE_DIR / 'logs'
     try:
-        LOGGING_DIR.mkdir(exist_ok=True)
+        LOGGING_DIR.mkdir(parents=True, exist_ok=True)
         file_handler = {
             'level': 'INFO',
             'class': 'logging.FileHandler',
@@ -245,6 +247,7 @@ if not IS_PRODUCTION:
         use_file_handler = False
 else:
     use_file_handler = False
+
 
 LOGGING = {
     'version': 1,
@@ -264,18 +267,17 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'simple',
         },
+        # file handler فقط اگر فعال شده باشد اضافه می‌شود
+        **({'file': file_handler} if use_file_handler else {})
     },
     'loggers': {
         'django': {
-            'handlers': ['console'],
+            'handlers': ['console'] + (['file'] if use_file_handler else []),
             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
             'propagate': True,
         },
     },
 }
 
-if use_file_handler:
-    LOGGING['handlers']['file'] = file_handler
-    LOGGING['loggers']['django']['handlers'].append('file')
 # ========== LOGGING ==========
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
