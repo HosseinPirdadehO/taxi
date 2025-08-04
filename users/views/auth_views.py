@@ -1,3 +1,6 @@
+from users.serializers import UserSerializer
+from users.models import User
+from rest_framework import status
 from django.http import Http404
 from rest_framework.exceptions import NotFound
 from users.serializers import StudentProfileSerializer, DriverProfileSerializer, ParentProfileSerializer
@@ -49,6 +52,7 @@ from users.serializers import (
     ActiveUserSerializer,
     NewUserSerializer,
     LocationStatsSerializer,
+    PhoneCheckSerializer
 )
 from rest_framework.permissions import IsAdminUser
 from django.db.models import Count, Sum
@@ -70,6 +74,26 @@ PROFILE_MODEL_MAP = {
     'educationadmin': EducationAdminProfile,
     'superadmin': SuperAdminProfile,
 }
+
+
+class CheckPhoneNumberView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        serializer = PhoneCheckSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        phone_number = serializer.validated_data['phone_number']
+
+        is_registered = User.objects.filter(phone_number=phone_number).exists()
+        message = " این شماره قبلاً ثبت‌نام کرده است." if is_registered else " این شماره جدید است و هنوز ثبت‌نام نشده."
+
+        return Response({
+            "success": True,
+            "message": message,
+            "data": {
+                "is_registered": is_registered
+            }
+        }, status=status.HTTP_200_OK)
 
 
 class SendOTPView(StandardResponseMixin, generics.GenericAPIView):
@@ -103,7 +127,7 @@ class SendOTPView(StandardResponseMixin, generics.GenericAPIView):
         return self.standard_response(
             success=True,
             message="کد تأیید ارسال شد.",
-            data={"otp_code": raw_code}  # فقط برای محیط توسعه
+            data={"otp": raw_code}  # فقط برای محیط توسعه
         )
 
 
@@ -259,8 +283,8 @@ class ChangePhoneRequestView(StandardResponseMixin, APIView):
         if User.objects.filter(phone_number=new_phone).exists():
             return self.error_response("این شماره قبلا ثبت شده است.", status.HTTP_400_BAD_REQUEST)
 
-        otp_code = str(random.randint(1000, 9999))
-        hashed_code = hashlib.sha256(otp_code.encode()).hexdigest()
+        otp = str(random.randint(1000, 9999))
+        hashed_code = hashlib.sha256(otp.encode()).hexdigest()
 
         PhoneOTP.objects.create(
             phone_number=new_phone,
@@ -271,8 +295,8 @@ class ChangePhoneRequestView(StandardResponseMixin, APIView):
             failed_attempts=0
         )
 
-        # TODO: ارسال پیامک واقعی به new_phone با otp_code
-        print(f" OTP for changing phone {new_phone} is {otp_code}")
+        # TODO: ارسال پیامک واقعی به new_phone با otp
+        print(f" OTP for changing phone {new_phone} is {otp}")
 
         return self.success_response("کد تایید به شماره جدید ارسال شد.")
 
@@ -293,7 +317,7 @@ class ChangePhoneVerifyView(StandardResponseMixin, APIView):
         serializer.is_valid(raise_exception=True)
 
         new_phone = serializer.validated_data['new_phone_number']
-        otp_code = serializer.validated_data['otp_code']
+        otp = serializer.validated_data['otp']
 
         try:
             phone_otp = PhoneOTP.objects.filter(
@@ -301,7 +325,7 @@ class ChangePhoneVerifyView(StandardResponseMixin, APIView):
         except PhoneOTP.DoesNotExist:
             return self.error_response("کد تایید یافت نشد.", status.HTTP_404_NOT_FOUND)
 
-        valid, message = phone_otp.verify_code(otp_code)
+        valid, message = phone_otp.verify_code(otp)
         if not valid:
             return self.error_response(message, status.HTTP_400_BAD_REQUEST)
 
@@ -387,7 +411,7 @@ class SetPasswordView(StandardResponseMixin, APIView):
 
 
 class PasswordResetView(StandardResponseMixin, APIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
 
     @swagger_auto_schema(
         request_body=PasswordResetSerializer,
@@ -403,7 +427,7 @@ class PasswordResetView(StandardResponseMixin, APIView):
         serializer.is_valid(raise_exception=True)
 
         phone_number = serializer.validated_data['phone_number']
-        otp_code = serializer.validated_data['otp_code']
+        otp = serializer.validated_data['otp']
         new_password = serializer.validated_data['new_password']
 
         try:
@@ -425,7 +449,7 @@ class PasswordResetView(StandardResponseMixin, APIView):
         if timezone.now() > otp_obj.created_at + timedelta(minutes=2):
             return self.error_response("کد تأیید منقضی شده است.", status.HTTP_400_BAD_REQUEST)
 
-        hashed_input = hashlib.sha256(otp_code.encode()).hexdigest()
+        hashed_input = hashlib.sha256(otp.encode()).hexdigest()
         if hashed_input != otp_obj.code:
             otp_obj.failed_attempts += 1
             otp_obj.save(update_fields=['failed_attempts'])
@@ -540,11 +564,6 @@ class MyInviterView(StandardResponseMixin, generics.RetrieveAPIView):
 
 class ReferralStatsView(StandardResponseMixin, generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
-    # filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    # filterset_fields = ['status', 'created_at']
-    # search_fields = ['invited_user__phone_number']
-    # ordering_fields = ['created_at']
-    # ordering = ['-created_at']
 
     @swagger_auto_schema(
         operation_summary="آمار رفرال‌های من",
@@ -567,12 +586,18 @@ class ReferralStatsView(StandardResponseMixin, generics.GenericAPIView):
         user = request.user
         referrals = Referral.objects.filter(inviter=user)
         count = referrals.count()
-        last = referrals.first().created_at if referrals.exists() else None
+        last = referrals.order_by(
+            '-created_at').first().created_at if referrals.exists() else None
+
         data = {
             'count': count,
             'last_invited_at': last,
         }
-        return self.success_response(data, message=_("آمار دعوت‌ها"))
+
+        return self.success_response(
+            data=data,
+            message=_("آمار دعوت‌ها")
+        )
 
 
 class CompleteProfileView(StandardResponseMixin, APIView):
@@ -846,7 +871,7 @@ class TestTokenView(APIView):
 # ---- ----
 
 
-class UserListView(generics.ListAPIView):
+class UserListView(StandardResponseMixin, generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -855,11 +880,43 @@ class UserListView(generics.ListAPIView):
                         'date_joined', 'first_name', 'last_name']
     search_fields = ['phone_number',
                      'national_code', 'first_name', 'last_name']
+    ordering_fields = ['date_joined', 'first_name', 'last_name']
     ordering = ['-date_joined']
 
-    @swagger_auto_schema(operation_summary="دریافت لیست کاربران")
+    @swagger_auto_schema(
+        operation_summary="دریافت لیست کاربران",
+        operation_description="این endpoint لیستی از کاربران را با امکان فیلتر، جستجو و مرتب‌سازی برمی‌گرداند.",
+        responses={
+            200: openapi.Response(
+                description="لیست کاربران",
+                schema=openapi.Schema(
+                    type=openapi.TYPE_OBJECT,
+                    properties={
+                        'success': openapi.Schema(type=openapi.TYPE_BOOLEAN),
+                        'message': openapi.Schema(type=openapi.TYPE_STRING),
+                        'data': openapi.Schema(
+                            type=openapi.TYPE_OBJECT,
+                            properties={
+                                'count': openapi.Schema(type=openapi.TYPE_INTEGER),
+                                'results': openapi.Schema(type=openapi.TYPE_ARRAY, items=openapi.Items(type=openapi.TYPE_OBJECT))
+                            }
+                        )
+                    }
+                )
+            )
+        }
+    )
     def get(self, request, *args, **kwargs):
-        return super().get(request, *args, **kwargs)
+        response = super().get(request, *args, **kwargs)
+        return self.standard_response(
+            success=True,
+            message=_("لیست کاربران با موفقیت دریافت شد."),
+            data={
+                "count": self.paginator.page.paginator.count if self.paginator and hasattr(self, 'paginator') else len(response.data),
+                "results": response.data
+            },
+            status_code=status.HTTP_200_OK
+        )
 
 
 class SchoolListView(generics.ListAPIView):
@@ -868,15 +925,15 @@ class SchoolListView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
 
-    # فیلتر بر اساس نوع مدرسه و id مکان مدرسه (FK)
     filterset_fields = ['school_type', 'school_location', 'school_name']
-
-    # جستجو در نام مدرسه و عنوان و آدرس مکان مدرسه (مربوط به FK)
     search_fields = ['school_name',
                      'school_location__title', 'school_location__address']
-
     ordering_fields = ['school_name']
     ordering = ['school_name']
+
+    @swagger_auto_schema(operation_summary="دریافت لیست مدارس")
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
 
 
 class DriverListView(generics.ListAPIView):

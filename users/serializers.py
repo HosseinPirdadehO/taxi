@@ -24,6 +24,10 @@ def convert_to_english_digits(text):
     return text.translate(str.maketrans('۰۱۲۳۴۵۶۷۸۹', '0123456789'))
 
 
+class PhoneCheckSerializer(serializers.Serializer):
+    phone_number = serializers.CharField()
+
+
 class SendOTPSerializer(serializers.Serializer):
     phone_number = serializers.CharField(max_length=15)
     permission_classes = [AllowAny]
@@ -56,7 +60,7 @@ class ChangePhoneRequestSerializer(serializers.Serializer):
 
 class ChangePhoneVerifySerializer(serializers.Serializer):
     new_phone_number = serializers.CharField(max_length=15)
-    otp_code = serializers.CharField(max_length=6)
+    otp = serializers.CharField(max_length=6)
 
 
 class ResendOTPSerializer(serializers.Serializer):
@@ -76,7 +80,7 @@ class SetPasswordSerializer(serializers.Serializer):
 
 class PasswordResetSerializer(serializers.Serializer):
     phone_number = serializers.CharField(max_length=15)
-    otp_code = serializers.CharField(max_length=6)
+    otp = serializers.CharField(max_length=6)
     new_password = serializers.CharField(min_length=8)
 
 
@@ -278,24 +282,66 @@ class ReferralInviterSerializer(serializers.ModelSerializer):
 
 
 class CompleteProfileSerializer(serializers.ModelSerializer):
-    driverprofile = DriverProfileSerializer(required=False)
-    parentprofile = ParentProfileSerializer(required=False)
-    studentprofile = StudentProfileSerializer(required=False)
-    schoolprofile = SchoolAdminProfileSerializer(required=False)
-    transportadminprofile = TransportAdminProfileSerializer(required=False)
-    educationadminprofile = EducationAdminProfileSerializer(required=False)
-    superadminprofile = SuperAdminProfileSerializer(required=False)
+    # حذف فیلدهای ثابت پروفایل
 
     class Meta:
         model = User
         fields = [
             'phone_number', 'first_name', 'last_name', 'email', 'role',
             'national_code', 'province', 'city', 'birth_date',
-            'driverprofile', 'parentprofile', 'studentprofile', 'schoolprofile',
-            'transportadminprofile', 'educationadminprofile', 'superadminprofile',
+            # فیلدهای پروفایل داینامیک اضافه می‌شوند
         ]
-        # جلوگیری از تغییر  توسط کاربر
         read_only_fields = ['role', 'phone_number']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        role_to_field = {
+            'driver': ('driverprofile', DriverProfileSerializer),
+            'parent': ('parentprofile', ParentProfileSerializer),
+            'student': ('studentprofile', StudentProfileSerializer),
+            'school_admin': ('schoolprofile', SchoolAdminProfileSerializer),
+            'transport_admin': ('transportadminprofile', TransportAdminProfileSerializer),
+            'education_admin': ('educationadminprofile', EducationAdminProfileSerializer),
+            'super_admin': ('superadminprofile', SuperAdminProfileSerializer),
+        }
+
+        role = None
+        if hasattr(self, 'instance') and self.instance:
+            role = getattr(self.instance, 'role', None)
+        elif isinstance(kwargs.get('data'), dict):
+            role = kwargs['data'].get('role')
+
+        if role in role_to_field:
+            field_name, serializer_class = role_to_field[role]
+            self.fields[field_name] = serializer_class(required=False)
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+
+        role_to_field = {
+            'driver': ('driverprofile', DriverProfileSerializer),
+            'parent': ('parentprofile', ParentProfileSerializer),
+            'student': ('studentprofile', StudentProfileSerializer),
+            'school_admin': ('schoolprofile', SchoolAdminProfileSerializer),
+            'transport_admin': ('transportadminprofile', TransportAdminProfileSerializer),
+            'education_admin': ('educationadminprofile', EducationAdminProfileSerializer),
+            'super_admin': ('superadminprofile', SuperAdminProfileSerializer),
+        }
+
+        role = getattr(instance, 'role', None)
+        # حذف فیلدهای پروفایل از خروجی اولیه (در صورت وجود)
+        for key in list(rep.keys()):
+            if key in role_to_field.values():
+                rep.pop(key)
+
+        if role in role_to_field:
+            field_name, serializer_class = role_to_field[role]
+            profile_instance = getattr(instance, field_name, None)
+            if profile_instance:
+                rep[field_name] = serializer_class(profile_instance).data
+
+        return rep
 
     def update(self, instance, validated_data):
         print("📥 validated_data:", validated_data)
@@ -335,7 +381,7 @@ class CompleteProfileSerializer(serializers.ModelSerializer):
             serializer_map = {
                 'driverprofile': DriverProfileSerializer,
                 'parentprofile': ParentProfileSerializer,
-                'studentprofile': SchoolAdminProfileSerializer,
+                'studentprofile': StudentProfileSerializer,
                 'schoolprofile': SchoolAdminProfileSerializer,
                 'transportadminprofile': TransportAdminProfileSerializer,
                 'educationadminprofile': EducationAdminProfileSerializer,
@@ -379,7 +425,6 @@ class CompleteProfileSerializer(serializers.ModelSerializer):
             print("⚠️ No profile data to update or profile name not found.")
 
         return instance
-
 
 # ----
 

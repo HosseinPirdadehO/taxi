@@ -26,14 +26,6 @@
 # ⸻# ⸻# ⸻# ⸻# ⸻# ⸻# ⸻# ⸻# ⸻# ⸻# ⸻
 
 
-# احراز هویت(OTP + JWT)
-# مدیریت کاربران(کلی و بر اساس نقش)
-# پروفایل‌های نقش‌ها(Student / Parent / Driver / School / Admin)
-# مکان‌ها(Location)
-# دعوت دوستان(Referral)
-# گزارش و آمارهـا(قابل توسعه در آینده)
-# ایمپورت/اکسپورت(با Django Import-Export)
-
 # ⸻
 import pytest
 from rest_framework.test import APIClient

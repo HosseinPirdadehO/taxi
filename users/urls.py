@@ -41,11 +41,13 @@ from users.views.auth_views import (
     ActiveUsersReportView,
     NewUsersReportView,
     LocationStatsReportView,
+    CheckPhoneNumberView
 
 )
 from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 
 urlpatterns = [
+    path('check-phone/', CheckPhoneNumberView.as_view(), name='check-phone'),
     # OTP Authentication
     # ارسال کد تایید به شماره موبایل
     path('send-otp/', SendOTPView.as_view(), name='send-otp'),
