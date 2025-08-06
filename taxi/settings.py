@@ -117,23 +117,23 @@ WSGI_APPLICATION = 'taxi.wsgi.application'
 
 # ========== DATABASE ==========
 # pro
-# DATABASES = {
-#     'default': {
-#         'ENGINE': os.getenv('DJANGO_DB_ENGINE'),
-#         'NAME': os.getenv('DJANGO_DB_NAME'),
-#         'USER': os.getenv('DJANGO_DB_USER'),
-#         'PASSWORD': os.getenv('DJANGO_DB_PASSWORD'),
-#         'HOST': os.getenv('DJANGO_DB_HOST'),
-#         'PORT': os.getenv('DJANGO_DB_PORT'),
-#     }
-# }
-# لوکال
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DJANGO_DB_ENGINE', 'django.db.backends.sqlite3'),
-        'NAME': BASE_DIR / os.getenv('DJANGO_DB_NAME', 'db.sqlite3'),
+        'ENGINE': os.getenv('DJANGO_DB_ENGINE'),
+        'NAME': os.getenv('DJANGO_DB_NAME'),
+        'USER': os.getenv('DJANGO_DB_USER'),
+        'PASSWORD': os.getenv('DJANGO_DB_PASSWORD'),
+        'HOST': os.getenv('DJANGO_DB_HOST'),
+        'PORT': os.getenv('DJANGO_DB_PORT'),
     }
 }
+# لوکال
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.getenv('DJANGO_DB_ENGINE', 'django.db.backends.sqlite3'),
+#         'NAME': BASE_DIR / os.getenv('DJANGO_DB_NAME', 'db.sqlite3'),
+#     }
+# }
 # ========== PASSWORD VALIDATORS ==========
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
